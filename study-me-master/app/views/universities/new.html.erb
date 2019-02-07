@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Create a new university</h2>
+
+  <%= form_for @new_university do |f| %>
+    <% if flash[:error] %>
+      <div><%= format_error flash[:error] %></div>
+    <% end %>
+
+    <div class="row">
+      <div class="six columns">
+        <%= f.label :name, 'University name' %>
+        <%= f.text_field :name, required: true %>
+      </div>
+
+      <div class="six columns">
+        <%= f.label :domain_name %>
+        <%= f.text_field :domain_name, required: true %>
+        <p class="hint">Enter the university's domain name (e.g. "nottingham.ac.uk"), without any @ symbol, www., etc.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="four columns">
+        <%= f.label :contact_name %>
+        <%= f.text_field :contact_name %>
+      </div>
+
+      <div class="four columns">
+        <%= f.label :contact_email %>
+        <%= f.email_field :contact_email %>
+      </div>
+
+      <div class="four columns">
+        <%= f.label :contact_number %>
+        <%= f.text_field :contact_number %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="six columns">
+        <%= f.label :price_per_researcher %>
+        <%= f.number_field :price_per_researcher %>
+      </div>
+
+      <div class="six columns">
+        <%= f.label :billing_date %>
+        <%= f.number_field :billing_date, min: 1, max: 28, value: Date.today.day %>
+        <p class="hint">Day of the month that the university will be invoiced (1-28)</p>
+      </div>
+    </div>
+
+    <div class="twelve columns">
+      <%= f.submit 'Save', class: 'basic button' %>
+    </div>
+  <% end %>
+</div>

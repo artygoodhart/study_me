@@ -1,0 +1,5 @@
+<% if current_user.participant_attribute.managed_account_id %>
+  <%= render partial: 'managed_accounts/partials/payments_table' %>
+<% else %>
+  <%= render partial: 'managed_accounts/partials/new_managed_account_form' %>
+<% end %>

@@ -1,0 +1,36 @@
+<% if flash[:alert] %>
+  <div class="flash error"><%= flash[:alert].capitalize %><%= image_tag asset_path("icons/close.png"), id: "close_flash" %></div>
+<% end %>
+
+<div class="devise-container v-height">
+
+  <%= render "users/shared/links" %>
+  <div class="v-height">
+    <div class="centered container">
+      <h1>Login</h1>
+
+      <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "devise" } do |f| %>
+
+      <div class="group">
+        <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+        <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
+      </div>
+
+      <%= f.label :remember_me, class: "round checkbox" do %>
+        <%= f.check_box :remember_me %>
+        <span>Stay Logged In</span>
+      <% end %>
+
+        <div class="button-div">
+          <%= f.submit "Log In", class: "basic button #{active_class?(new_user_session_path)}" %>
+        </div>
+
+        <div class="button-div">
+          <%= link_to "Sign Up", new_user_registration_path, class: "basic button" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>

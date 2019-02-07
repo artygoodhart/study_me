@@ -1,0 +1,63 @@
+<div class="menu">
+  <div class="logo-image"></div>
+
+  <ul class="nav">
+    <% if user_signed_in? %>
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+      <li><%= current_user.is_a?(Admin) ? (link_to "Admin panel", universities_path) : (link_to "Profile", profile_index_path) %></li>
+    <% else %>
+      <li><%= link_to "Sign up", new_user_registration_path %></li>
+      <li><%= link_to "Login", new_user_session_path %></li>
+    <% end %>
+
+    <li><%= link_to "FAQ", faq_path %></li>
+    <li><%= link_to "Contact us", contact_path %></li>
+    <li><%= link_to "Home", root_path %></li>
+  </ul>
+
+  <%= material_icon.menu %>
+  <ul class="dropdown">
+    <li>
+      <%= link_to root_path do %>
+        <span>Home</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to contact_path do %>
+        <span>Contact us</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to faq_path do %>
+        <span>FAQ</span>
+      <% end %>
+    </li>
+
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to profile_index_path do %>
+        <span>Profile</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+        <span>Logout</span>
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to new_user_session_path do %>
+          <span>Login</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_user_registration_path do %>
+          <span>Sign up</span>
+        <% end %>
+      </li>
+    <% end %>
+
+
+
+  </ul>
+</div>

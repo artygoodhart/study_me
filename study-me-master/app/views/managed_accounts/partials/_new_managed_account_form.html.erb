@@ -1,0 +1,36 @@
+<div class="payment-page">
+
+  <div class="payment-header">
+    <h1>Bank Details</h1>
+  </div>
+
+  <p>We store your bank details securely, using the payment provider Stripe. For more information, please see our <%= link_to "terms and conditions", "http://study-me.com/terms", target: :blank %></p>
+
+</div>
+
+<div class="inputs">
+  <%= form_tag managed_accounts_path do %>
+    <%= hidden_field_tag :return_to, params[:return_to] %>
+    <%= fields_for :managed_account do |f| %>
+
+      <%= f.text_field :account_holder_name, placeholder: "Account holder's name", class: "payment-input long-payment" %>
+
+      <div class="row">
+        <div class="six columns">
+          <%= f.text_field :bank_name, placeholder: "Bank name", class: "payment-input short-payment" %>
+        </div>
+        <div class="six columns">
+          <%= f.text_field :sort_code, placeholder: "Sort code", class: "payment-input short-payment creditCardText margin-left" %>
+        </div>
+      </div>
+
+      <%= f.text_field :account_number, placeholder: "Account number", class: "payment-input long-payment" %>
+
+      <%= f.text_field :address_line1, placeholder: "Address line 1", class: "payment-input long-payment"  %>
+      <%= f.text_field :city, placeholder: "City", class: "payment-input long-payment" %>
+      <%= f.text_field :postcode, placeholder: "Post code", class: "payment-input long-payment" %>
+
+      <%= f.submit "SUBMIT", class: "button submit-button" %>
+    <% end %>
+  <% end %>
+</div>

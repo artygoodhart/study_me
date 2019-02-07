@@ -1,0 +1,33 @@
+.button {
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  padding: 15px 30px;
+  text-decoration: none;
+}
+
+.basic.button {
+  position: absolute;
+  background-color: $yellow;
+  border-color: $white;
+  color: $white;
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+
+  &:hover,
+  &.active:hover {
+    background-color: $mint-green;
+    border: 0;
+    color: $white;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.active {
+    background-color: $white;
+    color: $yellow;
+  }
+}

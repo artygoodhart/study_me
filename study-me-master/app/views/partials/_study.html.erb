@@ -1,0 +1,27 @@
+<%= link_to study_path(study), class: "row study #{'featured' if study.featured}" do %>
+  <div class="on-hover-class">
+    <div class="backgound-photo-div">
+        <%= image_tag study.background_photo.url, class:"studies-backgroud-photo"%>
+    </div>
+    <div class="columns four mobile-full-width study-title">
+      <h6 class="study-title-text"><%= (fa_icon "check", class: "pull-right check-icon") if current_user.eligible?(study) %><%= length_of_text(study.title, 70)%></h6>
+      <hr class="divider-spacer">
+      <p class="normal-text small-study-text"><%= "Run by #{study.researcher.name} @ #{study.researcher.university.name}" %></p>
+    </div>
+    <div class="columns eight study-brief">
+      <div class="row">
+        <div class="one column">
+          <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </div>
+        <div class="ten columns">
+          <p class="study-text display-when-small"><%= length_of_text(study.aim, 100) %> <br> </p>
+          <p class="study-text display-when-big"><%= length_of_text(study.aim, 200) %> <br> </p>
+          <p class="study-text"> Award <%= humanized_money_with_symbol study.reward_per_participant %></p>
+        </div>
+        <div class="one column">
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+
+$(function () {
+  $(".stars").on("click","img", function(){
+    var star_clicked = $(this).index();
+    var i;
+    $('#rating').val(star_clicked + 1);
+    $(".stars img").remove();
+    for (i = 0; i <= star_clicked; i++) {
+      $('.stars').append('<%= image_tag "study-stars-active.svg" %>');
+    }
+    for (i === star_clicked; i < 5 ; i++) {
+      $('.stars').append('<%= image_tag "study-stars-grey.svg" %>');
+    }
+  });
+});

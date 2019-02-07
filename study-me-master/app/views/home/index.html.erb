@@ -1,0 +1,138 @@
+<div class="banner">
+  <div class="v-center">
+    <div class="logo-image"></div>
+    <h1>Study Me</h1>
+    <hr />
+    <h3>View studies.</h3>
+    <h3>Participate in research.</h3>
+    <h3>Create new knowledge.</h3>
+    <div class="call-to-action">
+      <%= current_user ? (link_to 'Find Studies', studies_path) : (link_to "Sign up", new_user_registration_path) %>
+    </div>
+  </div>
+
+  <div class="bubble" id="scroll-arrow"><%= material_icon.keyboard_arrow_down %></div>
+</div>
+
+<% if !(@study_count < 5) %>
+  <div class="studies grid-header" id="live-studies">
+    <h2><%= @study_count %> Live Studies</h2>
+  </div>
+
+  <div class="studies grid">
+    <% @studies.each do |study| %>
+      <%= link_to (current_user ? studies_path : new_user_registration_path), class: 'link' do %>
+        <div class="study tile">
+          <h1><%= study.title %></h1>
+          <hr />
+          <h3>Run by <%= study.researcher.name %> @ <%= study.researcher.university.name %></h3>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= link_to (current_user ? studies_path : new_user_registration_path) do %>
+      <div class="last study tile">
+        <h2>Explore more...</h2>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if !(@university_count == 0) %>
+  <div class="partners grid-header" id="academic-partners">
+    <h2><%= @university_count %> Academic Partners</h2>
+  </div>
+
+  <div class="partners grid">
+    <div class="partner tile">
+      <%= image_tag "logos/lancaster.png" %>
+    </div>
+
+    <div class="partner tile">
+      <%= image_tag "logos/durham.png" %>
+    </div>
+
+    <div class="partner tile">
+      <%= image_tag "logos/leeds-beckett.png" %>
+    </div>
+
+    <div class="partner tile">
+      <%= image_tag "logos/bristol.png" %>
+    </div>
+
+    <div class="partner tile">
+      <%= image_tag "logos/nottingham.png" %>
+    </div>
+
+    <div class="last partner tile">
+      <h2>Explore more...</h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="bright-idea grid-header" id="bright-idea">
+  <h2>Our Bright Idea</h2>
+</div>
+
+<div class="about-container">
+  <div class="bright-idea text-container">
+    <div class="vir-center">
+      <p>Academic research has laid the foundation for innovation and advancement in all manners of social, environmental, economical and technological disciplines. We rely on the latest findings to remain progressive in the 21st century, yet how we recruit participants for these studies has failed to evolve.</p>
+      <p>Study-Me is putting an end to the posters pinned up in your local doctor's surgery. We're affiliating with universities across the UK to bring research advertisements to one central website.</p>
+      <p>But we're not ending there. Like many we have a passion for sharing knowledge, spreading an enthusiasm for research and advocating higher education to the next generation.</p>
+      <p>You'll be able to browse and participate in studies, read and share the publications you have helped create and even earn some money along the way. It's the social wave of academic research, come and ride it with us.</p>
+    </div>
+  </div>
+
+  <%= link_to 'https://www.facebook.com/studymeuk/', target: '_blank' do %>
+  <div class="facebook snippet">
+    <%= fa_icon "facebook-square" %>
+    <p>Our mission stretches far past the practicalities our website initially intends to address; hoping to advocate higher education, engage the general public in research and development and improve the societal reputation of the social sciences.</p>
+    <!-- <blockquote>
+      Such an easy experience using Study Me to participate in research studies and earn me some money at the same time
+    </blockquote> -->
+  </div>
+  <% end %>
+
+  <%= link_to 'https://twitter.com/StudyMeUK', target: '_blank' do %>
+  <div class="twitter snippet">
+    <%= fa_icon "twitter" %>
+    <p>Imagine a platform improving the quality of research produced by our univeristies, fostering a public interest in academia and opening the door to public engagement.</p>
+    <!-- <blockquote>
+      Such an easy experience using Study Me to participate in research studies and earn me some money at the same time
+    </blockquote> -->
+  </div>
+  <% end %>
+</div>
+
+<div class="footer">
+    <div class="three columns">
+      <div class="logo-image"></div>
+      <h1>Study Me</h1>
+    </div>
+    <div class="three columns">
+      <h3>Important Links</h3>
+      <ul>
+        <li><%= link_to "Terms and Conditions", terms_path %></li>
+        <li><%= link_to "FAQ", faq_path %></li>
+      </ul>
+    </div>
+    <div class="three columns">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><%= link_to 'Contact Us', contact_path %></li>
+        <% unless current_user %>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="three columns">
+      <h3>Social Media Links</h3>
+      <ul>
+        <li><%= link_to 'Facebook', 'https://www.facebook.com/studymeuk/', target: '_blank' %></li>
+        <li><%= link_to 'Twitter', 'https://twitter.com/StudyMeUK', target: '_blank' %></li>
+        <li><%= link_to 'Instagram', 'https://www.instagram.com/studymeuk/', target: '_blank' %></li>
+      </ul>
+    </div>
+</div>

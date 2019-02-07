@@ -1,0 +1,16 @@
+<div class="devise-container v-height">
+
+  <%= render "users/shared/links" %>
+
+  <div class="container">
+    <h1 class="smaller-mobile-font">Resend confirmation instructions</h1>
+    <%= devise_error_messages! %>
+
+    <%= form_for resource, as: resource_name, url: confirmation_path(resource_name), html: { class: "devise center" } do |f| %>
+    <div class="group">
+      <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+    </div>
+    <%= f.submit "Resend confirmation instructions", class: "basic button" %>
+    <% end %>
+  </div>
+</div>

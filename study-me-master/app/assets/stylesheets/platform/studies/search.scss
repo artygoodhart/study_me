@@ -1,0 +1,56 @@
+@import 'variables';
+
+.studies-search-form-page {
+  padding: 30px;
+  text-align: center;
+  input[type=text] {
+    width: 80%;
+    padding: 20px;
+    border: 0;
+    border-bottom: 1px solid $yellow;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: $mint-green;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: $mint-green;
+    }
+    &::-ms-input-placeholder { /* IE 10+ */
+      color: $mint-green;
+    }
+    &::-moz-placeholder { /* Firefox 18- */
+      color: $mint-green;
+    }
+  }
+}
+
+.search-results-for-page ul {
+  // background-color: $white;
+  list-style-type: none;
+  width: 80%;
+  // margin: 0;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  // position: absolute;
+  // right: 0;
+
+  li {
+    border-top: 1px solid $mint-green;
+  }
+
+  li a {
+    color: $dark-text;
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+  }
+}
+
+.filterrific-periodically-observed-for-page {
+
+}

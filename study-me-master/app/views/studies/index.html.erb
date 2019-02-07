@@ -1,0 +1,35 @@
+<h1 class="studies-title"><%= @section.humanize %></h1>
+<hr class="dividing-line">
+<div class="row studies-menu-bar">
+  <div class="four columns center sub-menu-bar">
+    <%= link_to "Featured Studies", studies_path(section: "featured_studies"), class:"link-styling"%>
+  </div>
+  <div class="four columns center sub-menu-bar">
+    <%= link_to "Tags", studies_path(section: "tags"), class:"link-styling" %>
+  </div>
+  <div class="four columns center sub-menu-bar">
+  <%= link_to "All", studies_path(section: "all_studies"), class:"link-styling" %>
+  </div>
+
+  <button id="mobile-menu" class="center"> <i class="fa fa-angle-right mobile-rotate-arrow" aria-hidden="true"> </i> <%#= yield (:heading) %> <%= @section_title %> </button>
+
+  <ul id="mobile-dropdown">
+    <li>  <%= link_to "Featured Studies", studies_path(section: "featured_studies"), class:"link-styling"%> </li>
+    <li>  <%= link_to "Tags", studies_path(section: "tags"), class:"link-styling" %> </li>
+    <li>  <%= link_to "All", studies_path(section: "all_studies"), class:"link-styling" %> </li>
+  </ul>
+
+</div>
+<div class="mobile-positioning" id="studies-container">
+  <%= render partial: "studies/partials/#{@section}" %>
+</div>
+
+<div class="row">
+  <% if @page != 1 %>
+    <%= link_to "Previous page", studies_path(section: @section, page: @page.to_i - 1), class: "previous page #{@final_page ? 'twelve columns' : 'six columns'}" %>
+  <% end %>
+
+  <% if !@final_page %>
+    <%= link_to "Next page", studies_path(section: @section, page: @page.to_i + 1), class: "next page #{@page == 1 ? 'twelve columns' : 'six columns'}" %>
+  <% end %>
+</div>

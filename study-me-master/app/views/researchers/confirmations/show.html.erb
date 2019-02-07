@@ -1,0 +1,97 @@
+<div class="devise-container ">
+
+  <%= render "users/shared/links" %>
+
+
+  <div class="welcome-container">
+    <h1 class="center">Welcome</h1>
+
+    <div class="left aligned">
+      <h2>Here's what we have so far...</h2>
+      <p>Email: <span class="email-padding "><%= resource.email %></span></p>
+      <p>University: <span class="university-padding "><%= resource.university.name %></span></p>
+      <h2 class="margin-top-mobile">Just a few more things...</h2>
+      <div class="group">
+
+
+        <%= form_for resource, as: resource_name, url: researchers_confirm_path, html: { class: "devise" } do |f| %>
+        <%= f.hidden_field :confirmation_token %>
+
+
+        <%= f.label :name, "What's your name?" %>
+        <%= f.text_field :name, autofocus: true, placeholder: "Full Name", required: true %>
+
+        <%= f.label :gender, "Are you..." %>
+        <div class="row margin-bottom-mobile">
+          <div class="columns four">
+            <%= f.label :gender_male, class: "inline round checkbox" do %>
+            <%= f.radio_button :gender, "male", required: true %>
+            <span class="normal-text">Male</span>
+            <% end %>
+          </div>
+          <div class="columns four">
+            <%= f.label :gender_female, class: "inline round checkbox" do %>
+            <%= f.radio_button :gender, "female", required: true %>
+            <span class="normal-text">Female</span>
+            <% end %>
+          </div>
+          <div class="columns four margin-bottom-mobile">
+            <%= f.label :gender_other, class: "inline round checkbox" do %>
+            <%= f.radio_button :gender, "other", required: true %>
+            <span class="normal-text">Other</span>
+            <% end %>
+          </div>
+        </div>
+
+
+
+
+
+        <%= f.label :date_of_birth, "What's your date of birth?"%>
+        <%= f.date_field :date_of_birth, class: "date-picker ip-field-style" %>
+
+      </div>
+
+      <%= f.label :password, "Choose a secure password..." %>
+
+
+      <div class="icon-group">
+        <div class="three columns button-div">
+          <%= image_tag "icons/A-Z.svg", class: "password icon", id: "capital-icon" %>
+        </div>
+        <div class="three columns button-div">
+          <%= image_tag "icons/lower-case-a-z.svg", class: "password icon", id: "lower-icon" %>
+        </div>
+        <div class="three columns button-div">
+          <%= image_tag "icons/number.svg", class: "password icon", id: "number-icon" %>
+        </div>
+        <div class="three columns button-div">
+          <%= image_tag "icons/symbol.svg", class: "password icon hash", id: "symbol-icon" %>
+        </div>
+      </div>
+      <div class="group password-positioning">
+        <%= f.password_field :password, placeholder: "Password", id: "create-password", required: true, class: "ip-field-style password-field" %>
+        <div class="hint">*Remember to include upper and lowercase letters, numbers and symbols</div>
+      </div>
+
+      <div class="group">
+        <%= f.fields_for :researcher_attribute do |ff| %>
+        <%= ff.label :department, "Which department do you work in?" %>
+        <%= ff.text_field :department, placeholder: "Department", required: true, class: "ip-field-style text-field" %>
+        <% end %>
+      </div>
+      <div class="group ">
+        <%= f.label :referrer, "How did you hear about us?"%>
+        <%= f.select :referrer, @referrer_options, { include_blank: "Select Something" }, required: true, class: "text-field ip-field-style"  %>
+      </div>
+
+      <div class="center">
+        <%= f.submit "Finish Sign Up", class: "basic button button-position" %>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

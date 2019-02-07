@@ -1,0 +1,106 @@
+
+<% if @participation && @participation.accepted.nil? %>
+  <div class="waiting info-for-study-participant">
+    <h3>Researcher has to accept your participantion...we will let you know when you have been accepted</h3>
+    <h3>You have signed up to the timeslot, <%= "#{@participation.timeslot.from.strftime('%A, %b %d')}, #{@participation.timeslot.from.strftime('%H:%M')} - #{@participation.timeslot.to.strftime('%H:%M')}" %></h3>
+  </div>
+<% elsif @participation && @participation.timeslot && @participation.timeslot.is_in_future? && @participation.accepted %>
+<div class="accepted info-for-study-participant">
+  <h3>You have been ACCEPTED</h3>
+  <h3>Please remember to attend at your chosen time, <%= "#{@participation.timeslot.from.strftime('%A, %b %d')}, #{@participation.timeslot.from.strftime('%H:%M')} - #{@participation.timeslot.to.strftime('%H:%M')}" %></h3>
+</div>
+<% elsif @participation && !@participation.accepted %>
+<div class="rejected info-for-study-participant">
+  <h3>I'm sorry you have been REJECTED</h3>
+  <h3>If you have any questions or would like to speak to the researcher then you can contact them at: <%= mail_to "#{@study.researcher.email}" %></h3>
+</div>
+<% elsif @participation && !@participation.timeslot.is_in_future? && @participation.accepted %>
+<div class="accepted info-for-study-participant">
+  <h3>Congratulations, You have completed your study and earnt <%= humanized_money_with_symbol @study.reward_per_participant %>.</h3>
+  <h3>If you have had any problems with the study then please contact the researcher: <%= mail_to "#{@study.researcher.email}" %></h3>
+</div>
+<% end %>
+
+<% if !@study.joineable? %>
+  <div class="rejected info-for-study-participant">
+    <h3>This study is now FULL!</h3>
+  </div>
+<% end %>
+
+
+<div class="studies-container">
+  <h3>About the Study</h3>
+  <div class="row same-height">
+    <div class="six columns">
+      <h5 class="small-input-titles">Aim</h5>
+      <p> <%= @study.aim %> </p>
+    </div>
+    <div class="six columns">
+      <h5 class="small-input-titles">Type of Study</h5>
+      <h2 class="center"><%= @study.location %></h2>
+    </div>
+  </div>
+
+  <div class="row same-height">
+    <div class="six columns">
+      <h5 class="small-input-titles">Duration</h5>
+      <h2 class="center"><%= "#{@study.duration}mins" %></h2>
+    </div>
+    <div class="six columns">
+      <h5 class="small-input-titles">Award</h5>
+    <h2 class="center"> <%= humanized_money_with_symbol @study.reward_per_participant %></h2>
+    </div>
+  </div>
+  <% if @current_user.is_a?(Participant) && @study.participants.where(id: @current_user.id).empty? && @current_user.eligible?(@study) && @study.joineable? %>
+    <h3>Requirements</h3>
+
+    <%= form_for @new_participation do |f| %>
+      <%= f.hidden_field :study_id, value: @study.id %>
+
+      <% if flash[:error] %>
+        <%= format_error flash[:error] %>
+      <% end %>
+
+      <% @study.requirements_studies.each_with_index do |requirement_study, index| %>
+      <div class="row">
+        <div class="six columns">
+          <% prefilled_requirement = @reqs[requirement_study.requirement.id] %>
+          <input type="hidden" name="participation[participation_requirements][requirement<%= index %>][requirement_id]" value="<%= requirement_study.requirement.id %>" />
+          <h5 class="requirement-questions small-input-titles"><%= requirement_study.requirement.text %></h5>
+        </div>
+        <div class="six columns">
+          <div class="check-box">
+            <label for="participation[participation_requirements][requirement<%= index %>][checked]" class="round checkbox inline">
+              <input type="radio" name="participation[participation_requirements][requirement<%= index %>][checked]" value="true" <%= 'checked="checked"' if prefilled_requirement && prefilled_requirement.checked %> />
+              <span>Yes</span>
+            </label>
+          </div>
+          <div class="check-box">
+            <label for="participation[participation_requirements][requirement<%= index %>][checked]" class="round checkbox inline">
+              <input type="radio" name="participation[participation_requirements][requirement<%= index %>][checked]" value="false" <%= 'checked="checked"' if prefilled_requirement && !prefilled_requirement.checked %> />
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <% end %>
+      <div class="twleve columns">
+        <div class="center">
+          <%= f.submit "Participate", class: "studies-button" %>
+        </div>
+      </div>
+
+    <% end %>
+  <% end %>
+
+  <% if @study.user_can_rate_researcher?(@current_user) %>
+    <%= render "studies/partials/rate_study" %>
+  <% end %>
+
+  <% if @current_user.is_a? Admin %>
+    <h3>This study is <%= @study.featured ? 'currently featured.' : 'not currently featured.' %></h3>
+
+    <%= button_to "#{@study.featured ? 'Unfeature this study' : 'Feature this study'}", feature_study_path(featured: !@study.featured), method: :patch, class: 'button basic' %>
+  <% end %>
+</div>

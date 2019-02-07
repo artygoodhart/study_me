@@ -1,0 +1,24 @@
+<div class="menu">
+  <div class="logo-image"></div>
+
+  <ul class="nav">
+    <%- if controller_name != 'sessions' && controller_name != 'registrations' %>
+      <li>
+        <%= link_to "Log in", new_user_session_path %>
+      </li>
+    <% end -%>
+
+    <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+      <li>
+        <%= link_to "Resend Email Confirmation", new_user_confirmation_path %>
+      </li>
+    <% end -%>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <li>
+        <%= link_to "Forgot your password?", new_user_password_path %>
+      </li>
+    <% end -%>
+  </ul>
+
+</div>

@@ -1,0 +1,312 @@
+@import "variables";
+@import "mixins";
+
+
+
+.form-item {
+  padding: 30px 50px;
+
+  h2 {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 3em;
+  }
+
+  hr {
+    width: 100%;
+    border: 1px solid $mint-green;
+  }
+
+  .center-multiple-choice {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.studies-container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  p {
+    margin: 0 0 0 10px;
+    padding: 0 10px;
+  }
+  .study-errors {
+    p {
+      margin: 0;
+      background-color: $red;
+      color: $white;
+      padding: 15px;
+      // border-radius: 8px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+  }
+
+}
+
+.studies-button {
+  background-color: $mint-green;
+  border-radius: 3px;
+  border-style: none;
+  color: white;
+  padding: 20px 60px;
+}
+
+.study-title-banner {
+  height: $height-of-studies-banner;
+  width: 100%;
+  background-color: $dark-green;
+}
+
+.studies-container {
+  padding: 30px;
+  font-family: lato;
+  font-weight: 300;
+  color: $dark-grey;
+
+  .display-none {
+    display: none;
+  }
+}
+
+.input-titles {
+  font-size: 24px;
+  font-weight: 300;
+  // font-style: italic;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.input-style {
+  border: 2px solid white;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: $mint-green;
+  display: inline-block;
+  height: 30px;
+
+  width: 100%;
+
+  &:focus {
+    border: 2px solid $mint-green;
+    outline: none;
+    border-radius: 5px;
+  }
+}
+
+.form {
+  width: 80%;
+}
+
+.aim-input {
+  width: 100%;
+  // height: 230px;
+  margin: 10px auto;
+}
+
+.title-input {
+  // width: 450px;
+  margin-bottom: 20px;
+}
+
+.tags {
+  .input-titles {
+    text-align: left;
+  }
+}
+
+.small-input-titles {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.type-of-study {
+  margin: 25px;
+}
+
+.m-auto {
+  margin: 10px auto;
+}
+
+.requirements-container {
+  overflow: hidden;
+  width: 100%;
+
+  .requirement {
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+.requirements,
+.check-box {
+  float: left;
+}
+
+// .check-box {
+//   display: inline-block;
+// }
+
+.round.checkbox {
+  display: inline-block;
+  cursor: pointer;
+
+
+
+  input[type="checkbox"], input[type="radio"] {
+    -webkit-appearance: none;
+    width: 28px;
+    height: 28px;
+    margin: 5px 0 22px 20px;
+    cursor: pointer;
+    border: solid;
+    border-width: 1px;
+    border-color: $yellow;
+    @include border-radius(14px);
+
+
+    &:focus {
+      outline: none;
+    }
+
+    &:checked {
+      background-color: $mint-green;
+      border: 0;
+    }
+  }
+
+  span {
+    position: relative;
+    top: -32px;
+    font-weight: 300;
+    margin-left: 10px;
+  }
+
+}
+
+.tags-input {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+
+.suggestions {
+  font-size: 1em;
+  color: $yellow;
+  padding-left: 20px;
+  margin-bottom: 20px;
+
+  br {
+    line-height: normal;
+  }
+}
+
+.suggestions-title {
+  margin-left: -20px;
+}
+
+.enter-button {
+  display: inline-block;
+}
+
+.mobile-new-studies {
+  display: none;
+}
+
+.physical-button-pos {
+  display: inline;
+}
+
+.virtual-button-pos {
+  display: inline;
+}
+
+@media screen and (max-width: 1135px) {
+  .tag-form-item.four.columns {
+    width: 100%;
+  }
+}
+
+@media only screen
+and (min-width: 320px)
+and (max-width: 815px) {
+
+  .study-title-banner {
+    // height: 350px;
+  }
+
+  .studies-container {
+    padding: 0px;
+    width: 100%;
+  }
+
+  .tags {
+    text-align: center;
+  }
+
+  .suggestions {
+    font-size: 20px;
+  }
+
+  .studies-container {
+    .columns {
+      width: 100%;
+    }
+  }
+
+
+  .type-of-study {
+    margin: 40px 0;
+  }
+
+  .round.checkbox {
+    span {
+      font-size: 20px;
+    }
+  }
+
+  .eight.columns {
+    margin: 30px 0;
+  }
+
+  .input-titles {
+    margin-top: 20px;
+  }
+
+  .physical-button-pos {
+    width: 45%;
+    display: inline-block;
+  }
+
+  .virtual-button-pos {
+    width: 50%;
+    display: inline-block;
+  }
+
+
+
+  .input-style {
+    border-width: 2px;
+    height: 60px;
+    width: 100%;
+    font-size: 30px;
+  }
+
+  .input-titles {
+    font-size: 40px;
+  }
+
+  .mobile-new-studies {
+    text-align: center;
+  }
+
+  .small-input-titles {
+    font-size: 20px;
+    text-align: center;
+  }
+
+
+}

@@ -1,0 +1,250 @@
+@import 'variables';
+
+.table-of-participants {
+  .universities.table.stats {
+    margin-top: 0;
+  }
+  form {
+    padding: 0;
+  }
+  input[type='radio'] {
+    -webkit-appearance: radio;
+  }
+  input[type='submit'] {
+    background-color: $mint-green;
+    border: 0;
+    padding: 10px 20px;
+  }
+}
+
+.stats-page {
+  background-color: $light-grey;
+  height: auto;
+}
+
+.gender-box {
+  text-align: center;
+  width: 40%
+}
+
+.stats-banner {
+  height: $height-of-stats-banner;
+  line-height: $height-of-stats-banner;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.graph-banner {
+  color: #fff;
+  font-weight: 300;
+  height: $height-of-graph-banner;
+  line-height: $height-of-graph-banner;
+  text-align: center;
+}
+
+.graph-wrapper{
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+}
+
+.line-chart-wrapper {
+  height:100%;
+  width: 100%;
+  background-color: $mint-green;
+}
+
+.graph-info {
+  color: $dark-grey;
+  text-align: center;
+
+  h2 {
+    font-weight: 400;
+  }
+
+  div:nth-child(1) {
+    h2 {
+      color: #8e44ad;
+    }
+  }
+
+  div:nth-child(2) {
+    h2 {
+      color: #2980b9;
+    }
+  }
+
+  .inline {
+    display: inline-block;
+  }
+
+
+}
+
+.columns {
+  padding: 7px;
+}
+
+.six.columns {
+  padding: 5px 2.5px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.age-range {
+  background-color: $white;
+  width: 100%;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.data-wrapper {
+  background-color: $white;
+  height: calc(100% - 64px);
+  width: 100%;
+  text-align: center;
+  button {
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    height: 72px;
+    background-color: $mint-green;
+    // line-height: 72px;
+
+  }
+}
+
+.no-participants-yet {
+  h2 {
+    padding: 50px;
+    font-weight: 300;
+    height: calc(100vh - 480px);
+  }
+}
+
+.stats-data-container {
+  background-color: $white;
+  height: calc( 100% - 50px );
+  width: 100%;
+  text-align: center;
+
+  .full-width {
+    width: 100%;
+
+  }
+
+  hr {
+    width: 80%;
+    border-top: 1px solid grey;
+  }
+
+  div {
+    display: inline-block;
+    text-align: center;
+    // width: 19%;
+
+
+
+    h1 {
+      padding-top: 30px;
+    }
+
+    h2 {
+      margin: none;
+    }
+
+  }
+}
+
+
+.dark-navey {
+  background-color: $dark-navey;
+}
+
+.light-blue {
+  background-color: $light-blue;
+}
+
+.orange {
+  background-color: $orange;
+}
+
+.mint-green {
+  background-color: $mint-green;
+}
+
+.pdf-upload {
+  background-color: $white;
+  line-height: normal;
+  text-align: center;
+
+  p {
+    margin: 0 auto;
+    padding: 30px 0;
+
+    a {
+
+    }
+  }
+
+  form {
+    padding-top: 0;
+  }
+
+  .photo-upload {
+    background-color: $yellow-medium;
+    border-radius: 0;
+    display: block;
+    height: 120px;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  label {
+    font-weight: 300;
+    font-size: 20px;
+    color: $dark-grey;
+  }
+
+  input[type="text"] {
+    border: 0;
+    border-bottom: 2px solid $yellow;
+    width: 100%;
+    margin-bottom: 15px;
+    height: 50px;
+    outline: 0;
+    text-align: center;
+  }
+
+  .pdf-submit {
+    background-color: $mint-green;
+    border: 0;
+    color: $white;
+    display: block;
+    padding: 20px 0;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .pdf-submit:nth-child(2n) {
+    border-top: 1px solid white;
+  }
+}
+
+.add-non-user-participant {
+  width: 100%;
+
+  button {
+    width: 100%;
+    color: white;
+    height: 72px;
+    background-color: $mint-green;
+  }
+}

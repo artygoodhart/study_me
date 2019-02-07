@@ -1,0 +1,30 @@
+<div class="row studies-menu-bar">
+  <button id="mobile-menu" class="center"> <i class="fa fa-angle-right mobile-rotate-arrow" aria-hidden="true"> </i> <%#= yield (:heading) %> <%= @section_title %> </button>
+
+  <ul id="mobile-dropdown">
+    <li>  <%= link_to "#{@current_studies.count} Current Studies", profile_index_path(section: "current_studies"), class:"link-styling"%> </li>
+    <li>  <%= link_to "#{@studies_to_rate.count} Studies to Rate", profile_index_path(section: "studies_to_rate"), class:"link-styling" %> </li>
+    <li>  <%= link_to "#{@completed_studies.count} Completed Studies", profile_index_path(section: "completed_studies"), class:"link-styling" %> </li>
+  </ul>
+
+</div>
+
+<%= render partial: 'profile/partials/profile_heading' %>
+
+<hr class="dividing-line">
+
+<div class="row profile-menu-bar">
+  <div class="four columns center profile-sub-menu-bar">
+    <%= link_to "#{@current_studies.count} </br> Current Studies".html_safe, profile_index_path(section: "current_studies"), class:"link-styling"%>
+  </div>
+  <div class="four columns center profile-sub-menu-bar">
+    <%= link_to "#{@studies_to_rate.count} </br> Studies to Rate".html_safe, profile_index_path(section: "studies_to_rate"), class:"link-styling" %>
+  </div>
+  <div class="four columns center profile-sub-menu-bar">
+  <%= link_to "#{@completed_studies.count} </br> Completed Studies".html_safe, profile_index_path(section: "completed_studies"), class:"link-styling" %>
+  </div>
+
+</div>
+<div>
+  <%= render partial: "profile/partials/studies_list" %>
+</div>

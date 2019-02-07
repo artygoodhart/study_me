@@ -1,0 +1,46 @@
+<div class="payment-page">
+
+  <div class="payment-header">
+    <h1>Your account</h1>
+  </div>
+
+  <p>Your balance is: <b><%= humanized_money_with_symbol @balance.to_f / 100 %></b></p>
+  <p>Outstanding balances will be paid out to your bank account on the first of each month.</p>
+
+</div>
+
+<% if @transactions %>
+
+<table class="table no-hover">
+  <thead>
+    <tr>
+      <th>Transaction</th>
+      <th>Date/Time</th>
+      <th>Debits</th>
+      <th>Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <% if transaction[:object] == 'payout' %>
+          <td>Payout to your bank account</td>
+          <td><%= human_datetime(DateTime.strptime(transaction[:created].to_s,'%s')) %></td>
+          <td></td>
+          <td><%= humanized_money_with_symbol transaction[:amount].to_f / 100 %></td>
+        <% elsif transaction[:object] == 'transfer' %>
+        <td>Study payment</td>
+        <td><%= human_datetime(DateTime.strptime(transaction[:created].to_s,'%s')) %></td>
+        <td><%= humanized_money_with_symbol transaction[:amount].to_f / 100 %></td>
+        <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+
+<h1>No transactions yet</h1>
+
+<% end %>

@@ -1,0 +1,350 @@
+// Top menu bar
+
+
+
+.top-banner {
+  background-color: $yellow;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  z-index: 12000;
+}
+
+.menu-bars {
+  height: 36px;
+  margin-top: 7px;
+  margin-left: 20px;
+}
+
+.mobile-logo {
+  display: none;
+}
+
+.banner-pic {
+  display: inline;
+  height: 40px;
+  margin-left: 30px;
+}
+
+.fa-search {
+  float: right;
+  color: white;
+  font-size: 2.15em;
+  margin-top: 5px;
+  margin-right: 40px;
+}
+
+.studies-search-form {
+  display: inline-block;
+  float: right;
+  margin-right: 10px;
+  padding: 0;
+
+  input[type=text] {
+    background-color: transparent;
+    border: 0;
+    border-bottom: solid;
+    border-color: white;
+    border-width: thin;
+    color: white;
+    height: 40px;
+    width: 150px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: $light-grey;
+      font-weight: 100;
+    }
+
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: $light-grey;
+      font-weight: 100;
+    }
+
+    &::-ms-input-placeholder { /* IE 10+ */
+      color: $light-grey;
+      font-weight: 100;
+    }
+
+    &::-moz-placeholder { /* Firefox 18- */
+      color: $light-grey;
+      font-weight: 100;
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+// ROTATING BARS
+
+button {
+  background:none;
+  border:none;
+}
+
+button:focus {outline:0;}
+
+.rotate {
+  transform: rotate(90deg);
+  /*Firefox*/
+  -moz-transform: rotate(90deg);
+  /*Microsoft Internet Explorer*/
+  -ms-transform: rotate(90deg);
+  /*Chrome, Safari*/
+  -webkit-transform: rotate(90deg);
+}
+
+.icon-rotate {
+  transition:0.4s;
+  display: inline-block;
+}
+
+// Slide Menu sidebar
+#slide-menu {
+  top:0;
+  bottom: 0;
+
+  width: 220px;
+  // height: calc( 100% - 50px );
+  // min-height: 630px;
+  transition:0.4s;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-top: 50px;
+  position:fixed;
+  z-index: 110;
+  overflow:scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#slide-menu.menu-in {
+  width: 0px;
+}
+
+.menu-photo {
+  width:100%;
+  height: 100px;
+  overflow: hidden;
+  // background-image: url("seal-photo.png");
+  // background-size: cover;
+  img {
+    width: 220px;
+  }
+}
+
+#slide-menu {
+  .user-info{
+    .user{
+      font-size: 16px;
+      padding-left: 10px;
+      margin-bottom: 8px;
+    }
+    .university{
+      font-size: 16px;
+      font-weight: 100;
+      font-style: italic;
+      padding-left: 10px;
+      margin-top: 0px;
+    }
+    width: 100%;
+    height: 85px;
+    background: #4A4A4A;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.side-menu {
+  width: 100%;
+  height: calc( 100% - 185px );
+  min-height: 450px;
+
+  // top, transparent red
+  background: linear-gradient(
+  rgba(249, 174, 0, 0.75),
+  rgba(249, 174, 0, 0.75)
+  ),
+  /* your image */
+  url(asset-path('sidebar-photo.png'));
+
+  background-size: cover;
+  background-position: bottom;
+
+}
+
+
+.menu-links {
+  text-decoration: none;
+  color: white;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:hover {
+    color: $mint-green;
+  }
+
+
+}
+
+.menu-link-pos {
+  // padding-top: 50px;
+  line-height: 75px;
+  text-align: center;
+  &.active {
+    background-color: rgba(255, 255, 255, .4);
+    // color: $mint-green;
+    a {
+      font-weight: 400;
+    }
+  }
+}
+
+
+.content-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 220px;
+  width: calc(100% - 220px);
+  // min-width: 784px;
+  margin-top: 50px;
+  transition:0.4s;
+
+  &.expand-content {
+    margin-left: 0px !important;
+    transition:0.4s;
+    width: 100%;
+  }
+}
+
+.mobile-avatar {
+  display: none;
+}
+
+body {
+  // padding-bottom: 45px;
+}
+
+
+// Media Query for mobile device
+@media only screen
+and (min-width: 320px)
+and (max-width: 815px){
+
+  .top-banner {
+    height: $height-of-menubar;
+    text-align: center;
+  }
+
+  .menu-bars {
+    margin-top: 15px;
+    height: 60px;
+    margin-left: 30px;
+    float: left;
+  }
+
+  .banner-pic {
+    display: none;
+  }
+
+  // TODO: Sort out margin problem
+  // .mobile-pic-div {
+  //   display: inline-block;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  // }
+
+  .mobile-logo {
+    display: inline-block;
+    height: 60px;
+    padding: 15px;
+    // margin-left: 70px;
+  }
+
+  .fa-search {
+    font-size: 50px;
+    margin-top: 20px;
+    margin-right: 30px;
+  }
+
+  .content-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: $height-of-menubar;
+    width: 100%
+  }
+
+  .search-box-placeholder {
+    display: none;
+  }
+
+  .studies-search-form {
+    display: none;
+  }
+
+  #slide-menu.menu-in {
+    width: 100%;
+  }
+
+  #slide-menu {
+    .user-info {
+      position: relative;
+      height: 100px;
+      text-align: center;
+
+      .user {
+        margin-top: 25px;
+      }
+
+      .university {
+        margin-top: 15px;
+      }
+    }
+
+    width: 0px;
+    height: calc(100% - $height-of-menubar);
+    padding-top: $height-of-menubar;
+    overflow: hidden;
+  }
+
+  .side-menu {
+    height: calc(100% - 100px);
+    min-height: inherit;
+  }
+
+  .menu-photo {
+    display: none;
+  }
+
+  .mobile-avatar {
+    width: 35%;
+    float: left;
+    display: inline;
+    height: 100%;
+    background-image: url(asset-path("seal-photo.png"));
+    background-size: cover;
+    background-position: center;
+  }
+  .menu-links {
+    font-size: 25px;
+    // line-height: calc((100% - 190px) / 6);
+    height: 100%;
+    line-height: calc((100vh - 190px) / 5);
+    display: block;
+  }
+  .menu-link-pos {
+    padding-top: 0px;
+    border-bottom: .5px solid rgba(250, 232, 193,1);
+    height: calc(100% / 5);
+  }
+}

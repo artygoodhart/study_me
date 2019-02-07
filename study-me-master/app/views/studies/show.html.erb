@@ -1,0 +1,19 @@
+<div class="study-title-banner <%= 'featured' if @study.featured %>">
+    <%= image_tag @study.background_photo.url, class:"show-background-photo"%>
+
+  <h2><%= @study.title %></h2>
+  <div class="display-inline-desktop">
+    <p>Run by <%= @study.researcher.name %></p>
+    <p>@ <%= @study.researcher.university.name %></p>
+  </div>
+  <div class="study-stars">
+    <% (1..5).each do |i| %>
+      <%= image_tag "study-stars#{'-active' if i <= @study.researcher.rating}.svg"%>
+    <% end %>
+  </div>
+</div>
+<% if @study.researcher == current_user %>
+  <%= render partial: 'studies/show_partials/stats', locals: { study: @study } %>
+<% else %>
+  <%= render partial: 'studies/show_partials/overview', locals: { study: @study } %>
+<% end %>

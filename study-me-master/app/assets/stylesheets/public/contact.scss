@@ -1,0 +1,84 @@
+@import '../variables';
+
+.banner {
+  background-color: $yellow;
+  color: $white;
+  padding: 130px 0 80px;
+  text-align: center;
+
+  h1 {
+    font-weight: 300;
+  }
+}
+
+.enquiries {
+  // This should all be variables
+  background: linear-gradient(rgba(75, 168, 209, .91), rgba(75, 168, 209, .91)), url("glasses-background.png");
+  background-position: top center;
+  color: $white;
+  text-align: center;
+
+  .enquiries-text {
+    padding: 80px 40px;
+
+    h2 {
+      font-weight: 300;
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  body {
+    background: asset-url('glasses-background.png') no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .banner {
+    background-color: $translucent-yellow;
+    box-sizing: border-box;
+    height: 295px;
+
+    h1 {
+      font-weight: 100;
+    }
+  }
+
+  .collapse {
+    position: relative;
+  }
+
+  .enquiries {
+    // Should be a variable
+    background: rgba(75, 168, 209, .91);
+    box-sizing: border-box;
+    height: calc(100% - 425px);
+    min-height: 375px;
+    overflow: hidden;
+
+    .enquiries-text,
+    form {
+      box-sizing: border-box;
+      float: left;
+      width: 50%;
+    }
+
+    .enquiries-text {
+      height: 100%;
+      position: relative;
+
+      h2 {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+      }
+    }
+  }
+
+  .footer {
+    background: $translucent-yellow;
+    height: 130px;
+  }
+}

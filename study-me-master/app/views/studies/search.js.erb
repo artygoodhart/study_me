@@ -1,0 +1,19 @@
+<% js = escape_javascript(render partial: 'studies/partials/search_list', locals: { studies: @studies_search_results, query: @query }) %>
+
+if ($("#filterrific_search_query_page").is(':visible')) {
+  console.log("SEARCH PAGE");
+  if ($("#filterrific_search_query_page").val() === "") {
+    $("#filterrific-studies-results-page").html("");
+  } else {
+
+    $("#filterrific-studies-results-page").html("<%= js %>");
+  }
+} else {
+  console.log("SEARCH MENUBAR");
+  if ($("#filterrific_search_query").val() === "") {
+    $("#filterrific-studies-results").html("");
+  } else {
+
+    $("#filterrific-studies-results").html("<%= js %>");
+  }
+}

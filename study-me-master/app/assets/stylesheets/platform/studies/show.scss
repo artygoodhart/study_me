@@ -1,0 +1,262 @@
+@import 'variables';
+@import 'mixins';
+@import 'stats';
+
+.study-title-banner {
+  background-color: $lighter-filter;
+  height: $height-of-studies-banner;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  color: $dark-grey;
+
+  h2 {
+    font-weight: 300;
+    margin: 0;
+    padding: 30px 0 10px 30px;
+  }
+
+  p {
+    font-size: 12px;
+    margin: 0;
+    padding-left: 30px;
+  }
+
+  .display-inline-desktop {
+    display: inline-block;
+  }
+
+  .show-background-photo {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    min-height: $height-of-studies-banner;
+  }
+
+  .study-stars {
+    width: 15px;
+    display: inline;
+    margin-left: 20px;
+  }
+}
+
+.study-title-banner.featured::after {
+  @include study-feature-banner;
+}
+
+.studies-container {
+  color: $dark-grey;
+  font-family: lato;
+  font-weight: 300;
+  padding: 0 50px 30px;
+  h3 {
+    margin: 20px 0 0 -20px;
+    font-weight: 100;
+    font-style: italic;
+    font-size: 32px;
+  }
+  p {
+    font-size: 13px;
+    padding-right: 40px;
+  }
+  h2 {
+    font-weight: 300;
+    font-size: 25px;
+    padding: 0px 30px;
+  }
+}
+.info-for-study-participant {
+  padding: 20px;
+  color: white;
+  text-align: center;
+  h3 {
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
+.waiting {
+  background-color: $orange;
+}
+
+.accepted {
+  background-color: $mint-green;
+}
+
+.rejected {
+  background-color: $red;
+}
+
+form {
+  padding-top: 15px;
+}
+
+.small-input-titles {
+  font-size: 17px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.requirement-questions {
+  margin-top: 10px;
+}
+
+.rate-participants {
+  width: 100%;
+  text-align: center;
+  background-color: $mint-green;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  // height: 30px;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.timeslots-table {
+  margin-top: 0;
+}
+
+
+
+// This is a flex hack to make all the columns in the row the same height
+// Found here https://css-tricks.com/fluid-width-equal-height-columns/
+
+.same-height {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+
+  .columns {
+    flex: 1;
+  }
+
+  .columns:nth-child(1) {
+    order: 0;
+  }
+
+  .columns:nth-child(2) {
+    order: 1;
+  }
+
+  .columns:nth-child(3) {
+    order: 2;
+  }
+}
+
+//Buttons
+
+.round.checkbox {
+  cursor: pointer;
+  display: inline-block;
+
+  input[type="checkbox"], input[type="radio"] {
+    -webkit-appearance: none;
+    width: 28px;
+    height: 28px;
+    margin: 5px 0 22px 20px;
+    cursor: pointer;
+    border: solid;
+    border-width: 1px;
+    border-color: $yellow;
+    @include border-radius(14px);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:checked {
+      background-color: $mint-green;
+      border: 0;
+    }
+  }
+
+  span {
+    font-weight: 300;
+    margin-left: 10px;
+    position: relative;
+    top: -32px;
+  }
+}
+
+.check-box {
+  display: inline;
+}
+
+.studies-button {
+  background-color: $mint-green;
+  border-radius: 3px;
+  border-style: none;
+  color: white;
+  padding: 15px 40px;
+  margin-top: 30px;
+}
+
+//Rate studies
+
+.stars {
+  margin-left: 100px;
+  margin-top: 50px;
+  img {
+    float: left;
+    height: 70px;
+    margin-left: 15px;
+  }
+}
+
+@media only screen
+and (min-width: 320px)
+and (max-width: 815px) {
+
+  .study-title-banner {
+    height: $height-of-studies-banner-mobile;
+
+    h2 {
+      padding: 20px 30px 5px 30px;
+      font-size: 27px;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 15px;
+    }
+    .show-background-photo {
+      min-height: $height-of-studies-banner-mobile;
+    }
+    .display-inline-desktop {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .study-stars {
+      padding-left: 10px;
+    }
+  }
+
+  .studies-container {
+    p {
+      padding-right: 10px;
+      font-size: 16px;
+    }
+  }
+
+  .same-height {
+    display: block;
+  }
+
+  .small-input-titles {
+    font-size: 20px;
+  }
+
+  //Rate Studies
+  .stars {
+    margin: 30px 0;
+    img {
+      margin-left: 5px;
+      width: 40px;
+    }
+  }
+
+}

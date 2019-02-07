@@ -1,0 +1,31 @@
+.flash {
+  box-sizing: border-box;
+  font-size: 32px;
+  font-weight: 300;
+  padding: 34px 94px 34px 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 6000;
+
+  img {
+    cursor: pointer;
+    margin: 0 25px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 300;
+  }
+
+  &.error {
+    background-color: #c0392b;
+    color: white;
+  }
+
+  &.success {
+    background-color: #2ecc71;
+    color: white;
+  }
+}

@@ -1,0 +1,23 @@
+<p>Hello <%= @participant.name %></p>
+
+<% if @participation.accepted %>
+  <p>You have been accepted to the study: </p>
+
+  <h1><%= @study.title %></h1>
+  <p>Run by <%= @study.researcher.name %></p>
+
+  <h1>Your timeslot is: <%= "#{@participation.timeslot.from.strftime('%A, %b %d')}, #{@participation.timeslot.from.strftime('%H:%M')} - #{@participation.timeslot.to.strftime('%H:%M')}" %></h1>
+
+<% else %>
+
+  <p>We are sorry, you have been rejected from the study: </p>
+
+  <h1><%= @study.title %></h1>
+  <p>Run by <%= @study.researcher.name %></p>
+
+  <p>If you have any queries please contact the researcher: <%= mail_to @study.researcher.email %></p>
+
+<% end %>
+
+<p>Thanks</p>
+<p>Study Me Team</p>

@@ -1,0 +1,55 @@
+@mixin border-radius($r) {
+  -webkit-border-radius: $r;
+  -moz-border-radius: $r;
+  border-radius: $r;
+}
+
+@mixin placeholder-colour($colour) {
+  ::-webkit-input-placeholder {
+    color: $colour;
+  }
+
+  :-moz-placeholder { // Firefox 18-
+    color: $colour;
+  }
+
+  ::-moz-placeholder {  // Firefox 19+
+    color: $colour;
+  }
+
+  :-ms-input-placeholder {
+    color: $colour;
+  }
+}
+
+@mixin hide-placeholder-on-focus {
+  &:focus::-webkit-input-placeholder {
+    opacity: 0;
+  }
+
+  &:focus:-moz-placeholder { // Firefox 18-
+    opacity: 0;
+  }
+
+  &:focus::-moz-placeholder {  // Firefox 19+
+    opacity: 0;
+  }
+
+  &:focus:-ms-input-placeholder {
+    opacity: 0;
+  }
+}
+
+@mixin study-feature-banner {
+  background-color: $yellow;
+  content: 'Featured';
+  color: white;
+  display: block;
+  height: 25px;
+  position: absolute;
+  right: -35px;
+  text-align: center;
+  top: 30px;
+  transform: rotate(45deg);
+  width: 150px;
+}

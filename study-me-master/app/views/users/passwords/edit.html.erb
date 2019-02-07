@@ -1,0 +1,35 @@
+<div class="devise-container v-height">
+  <%= render "users/shared/links" %>
+  <div class="container">
+    <h1>Reset your password</h1>
+
+    <%= form_for resource, as: resource_name, url: password_path(resource_name), html: { class: "devise center", id: "reset_password", method: :put } do |f| %>
+      <%= f.hidden_field :reset_password_token %>
+
+      <div class="icon-group">
+        <div class="three columns button-div">
+          <%= image_tag "icons/A-Z.svg", class: "password icon", id: "capital-icon" %>
+        </div>
+        <div class="three columns button-div">
+          <%= image_tag "icons/lower-case-a-z.svg", class: "password icon", id: "lower-icon" %>
+        </div>
+        <div class="three columns button-div">
+          <%= image_tag "icons/number.svg", class: "password icon", id: "number-icon" %>
+        </div>
+        <div class="three columns button-div">
+          <%= image_tag "icons/symbol.svg", class: "password icon hash", id: "symbol-icon" %>
+        </div>
+      </div>
+
+      <div class="group">
+        <%= f.password_field :password, autofocus: true, placeholder: "Password", id: "create-password", required: true %>
+      </div>
+
+      <div class="group">
+        <%= f.password_field :password, placeholder: "Confirm password", required: true %>
+      </div>
+
+      <%= f.submit "Change my password", class: "basic button" %>
+    <% end %>
+  </div>
+</div>

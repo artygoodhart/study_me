@@ -1,0 +1,54 @@
+<div class="top-banner">
+  <!-- <%= material_icon.menu %> -->
+  <%= image_tag "icons/menu-bars.svg", id: "toggle", class: "menu-bars icon-rotate" %>
+  <%= image_tag "lightbulb-pic.png", class:"banner-pic"%>
+  <!-- <div class="mobile-pic-div"> -->
+  <%= image_tag "mobile-logo.png", class:"mobile-logo"%>
+  <!-- </div> -->
+  <%= link_to '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe, search_studies_path() %>
+
+  <%= form_for :filterrific, url: search_studies_path, method: :post, html: { class: "studies-search-form #{"hidden" if params[:action] == 'search'}" }, remote: true do |f| %>
+    <%= f.text_field :search_query, class: 'filterrific-periodically-observed', placeholder: 'Search for a Study' %>
+  <% end %>
+  <div id="filterrific-studies-results" class="search-results"></div>
+  <!-- <div class="search-box-placeholder"></div> -->
+</div>
+
+<div id="slide-menu">
+  <div class="menu-photo">
+    <%= image_tag 'seal-photo.png' %>
+  </div>
+  <div class="user-info">
+    <div class="mobile-avatar"></div>
+
+    <p class="user">
+      <%= current_user.name %>
+    </p>
+    <p class="university">
+      <%= 'Study Me' if current_user.is_a? Admin %>
+      <%= current_user.university.name if current_user.is_a? Researcher %>
+      <%= 'Participant' if current_user.is_a? Participant %>
+    </p>
+  </div>
+  <div class="side-menu">
+    <% unless current_user.is_a? Admin %>
+      <div class="menu-link-pos <%= active_class?(profile_index_path) %>"> <%= link_to("Profile", profile_index_path , class: "menu-links") %></div>
+    <% end %>
+
+    <div class="menu-link-pos <%= active_class?(studies_path) %>"> <%= link_to("Find Studies", studies_path , class: "menu-links") %></div>
+
+    <% if current_user.is_a? Admin %>
+      <div class="menu-link-pos <%= active_class?(universities_path)%>">  <%= link_to("Admin Panel", universities_path ,class: "menu-links") %></div>
+    <% end %>
+
+    <% if current_user.is_a? Participant %>
+      <div class="menu-link-pos <%= active_class?('') %>"> <%= link_to("Payment", payments_path ,class: "menu-links") %></div>
+    <% end %>
+
+    <div class="menu-link-pos <%= active_class?('') %>">
+      <%= link_to 'FAQ', faq_path, class: "menu-links" %>
+    </div>
+
+    <div class="menu-link-pos"> <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "menu-links"%></div>
+  </div>
+</div>

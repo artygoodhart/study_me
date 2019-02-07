@@ -1,0 +1,98 @@
+@import "variables";
+
+.payment-page {
+  p {
+    text-align: center;
+  }
+}
+
+.payment-header {
+  background: linear-gradient(
+  rgba(255, 255, 255, 0.9),
+  rgba(255, 255, 255, 0.9)
+  ),
+  asset-url('bank-photo.png');
+  background-size: cover;
+
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  width: 100%;
+  h1 {
+    font-size: 40px;
+    margin: 0;
+    text-transform: none;
+  }
+}
+
+.inputs {
+  padding: 50px 0px;
+  width: 500px;
+  margin: auto;
+}
+
+.payment-input {
+  border: 1px solid $yellow;
+  border-radius: 5px;
+  display: inline-block;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 300;
+  margin: 5px 0px 0px 5px;
+  padding: 5px 0px 5px 5px;
+
+  &:focus {
+    border: 1px solid $mint-green;
+    outline: none;
+  }
+}
+
+.row {
+  overflow: visible;
+}
+
+.long-payment {
+  width: 500px;
+}
+
+.short-payment {
+  width: 240px;
+  &.margin-left {
+    margin-left: 15px;
+  }
+}
+
+
+.submit-button {
+  background-color: $yellow;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 100;
+  margin-top: 100px;
+  padding: 5px 30px;
+  width: 100%;
+}
+
+@media only screen
+and (min-width: 320px)
+and (max-width: 815px) {
+
+  .inputs {
+    width: 80%;
+  }
+  .short-payment {
+    width: 100%;
+    &.margin-left {
+      margin-left: 5px;
+    }
+  }
+  .long-payment {
+    width: 100%;
+  }
+
+  .six.columns {
+    width: 100%;
+  }
+
+}

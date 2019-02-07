@@ -1,0 +1,15 @@
+@import "variables";
+
+form.new_university {
+  margin: 64px 0;
+
+  .columns {
+    padding: 0 15px;
+
+    p.hint {
+      color: $dark-secondary-text;
+      font-size: .8em;
+      margin-top: -20px;
+    }
+  }
+}

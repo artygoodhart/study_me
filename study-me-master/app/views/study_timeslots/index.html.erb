@@ -1,0 +1,20 @@
+<div class="study-title-banner <%= 'featured' if @study.featured %>">
+    <%= image_tag @study.background_photo.url, class:"show-background-photo"%>
+
+  <h2><%= @study.title %></h2>
+  <div class="display-inline-desktop">
+    <p>Run by <%= @study.researcher.name %></p>
+    <p>@ <%= @study.researcher.university.name %></p>
+  </div>
+  <div class="study-stars">
+    <% (1..5).each do |i| %>
+      <%= image_tag "study-stars#{'-active' if i <= @study.researcher.rating}.svg"%>
+    <% end %>
+  </div>
+</div>
+<div class="back-to-study">
+  <%= link_to (fa_icon 'angle-left', text: "Go back to study"), study_path(@study) %>
+</div>
+<h1 class="center">Your timeslots</h1>
+
+<%= render 'studies/partials/table_of_timeslots' %>

@@ -1,0 +1,46 @@
+<div class="banner">
+  <h1>Contact Us</h1>
+</div>
+
+<div class="enquiries">
+  <div class="enquiries-text">
+    <h2>
+      If you’d like to join our mission to create and share knowledge across the world, or you simply have a further enquiry, send a message and we’ll respond as quickly as we can!
+    </h2>
+  </div>
+
+  <%= form_for @new_contact, html: { class: "tiled" }, remote: true do |f| %>
+    <div class="error field">Could not send message. Please ensure you have filled out all of the fields</div>
+    <div class="collapse">
+      <div class="field-container">
+        <%= f.text_field :name, placeholder: "Name", class: "mint-green field" %>
+        <%= f.email_field :email, placeholder: "Email", class: "dark-blue field" %>
+        <%= f.text_area :message, placeholder: "Message", class: "two-high orange field" %>
+      </div>
+
+      <div class="label-container">
+        <div class="label">
+          <%= f.label :name, "Requried" %>
+        </div>
+
+        <div class="label">
+          <%= f.label :email, "Requried" %>
+        </div>
+
+        <div class="two-high label">
+          <%= f.label :message, "Requried" %>
+        </div>
+      </div>
+
+      <%= f.submit "Send", class: "very-light-blue field", id: "contact_submit" %>
+    </div>
+
+    <div class="very-light-blue hidden expand field">
+      <h5>Thank you</h5>
+    </div>
+  <% end %>
+</div>
+
+<div class="footer">
+
+</div>

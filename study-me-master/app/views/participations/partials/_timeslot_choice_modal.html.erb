@@ -1,0 +1,23 @@
+<div class="modal-dialog">
+	<div class="modal-content">
+		<h2>Confirm Timeslot</h2>
+    <div class="modal-text">
+      <h3 id="times" class="timeslot">Times ***</h3>
+      <p class="center">This is a <%= @study.location %> Study </p>
+      <p class="center">If you do not attend you will not be paid.</p>
+    </div>
+    <div class="modal-buttons">
+      <div class="button modal-btn cancel-button">
+        Cancel
+      </div>
+
+			<div class="form-timeslot-button-submit">
+				<%= form_for @participation, url: participation_path(@participation), method: :patch, html: { id: "edit_participation_form" } do |f| %>
+	        <%= f.hidden_field :timeslot_id %>
+
+	        <%= f.submit "Ok", class: "button modal-btn active" %>
+	      <% end %>
+			</div>
+    </div>
+	</div>
+</div>

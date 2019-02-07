@@ -1,0 +1,5 @@
+<ul>
+  <% studies.each do |study| %>
+    <li><%= link_to highlight_query(study.title, query).html_safe, study %></li>
+  <% end %>
+</ul>

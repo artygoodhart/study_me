@@ -1,0 +1,14 @@
+@import 'platform/studies/show';
+
+.back-to-study {
+  background-color: $mint-green;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
+}

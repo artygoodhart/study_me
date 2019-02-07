@@ -1,0 +1,192 @@
+@import "variables";
+@import "mixins";
+
+.wrapped-div {
+
+  .in-cell-time {
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    display: inline-block;
+    margin: 0;
+  }
+
+  .calendar-button-styling {
+    float: right;
+    top: 2px;
+    margin-right: 5px;
+    margin: 0;
+    display: inline-block;
+    font-size: 15px;
+    padding-bottom: 0;
+  }
+
+  .slide-button-styling {
+    text-align: center;
+    margin: auto;
+    line-height: 20px;
+    padding: 0px;
+  }
+
+  .cal-header {
+    height: auto;
+    position: relative;
+
+    #finalise_button {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .cal-title {
+    text-transform: none;
+    text-align: center;
+    font-weight: 100;
+    padding: 25px 0 0 0;
+    font-size: 60px;
+    font-weight: 300;
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .cal-day {
+    width: 14%;
+    height: 100vh;
+    border-right: solid 2px;
+    display: inline-block;
+    margin-right: -4px;
+  }
+
+  .cal-week {
+    text-align: center;
+    margin-top: 20px;
+    .start-end-week {
+      display: inline-block;
+      //This Div has been given a fixed div to stop the arrows from moving
+      width: 90px;
+    }
+    i {
+      margin: -20px 20px 0 20px;
+      line-height: 50px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  }
+
+  .border-top {
+    border-top: 1px solid white;
+  }
+
+  .cal-times {
+    position:absolute;
+    left: 5px;
+    top: 400px;
+    line-height: 81px;
+    color: $grey;
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  hr {
+    width: 100%;
+    height: 2px;
+    background-color: $grey;
+    margin: 0px;
+  }
+
+  .dates {
+    table {
+      width: 95%;
+      margin: auto;
+      border-spacing: 0;
+      border-collapse: separate;
+      table-layout: fixed;
+      tr {
+        td {
+          padding-top: 5px;
+          overflow: hidden;
+          font-weight: 300;
+          text-align: left;
+          color: $dark-grey;
+
+          &:first-child {
+            border-radius:3px 0 0 0;
+          }
+          &:last-child {
+            border-radius:0 3px  0 0;
+          }
+          .date {
+            text-align: left;
+            color:black;
+            font-size: 1.2em;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            line-height: 1.8;
+            font-weight: 500;
+          }
+          .day-of-week {
+            display: block;
+            margin: 0;
+
+          }
+        }
+      }
+    }
+  }
+
+  .calendar {
+    table {
+      margin: 0px auto;
+      width: 95%;
+      border-spacing: 0;
+      border-collapse: separate;
+      table-layout: fixed;
+      margin-bottom: 50px;
+      text-align: center;
+
+      tbody {
+        tr {
+          td:last-child {
+            border-right: none;
+          }
+          td.highlighted {
+            // background-color:#7ED321;
+            background-color: $mint-green;
+          }
+          td.red-highlighted {
+            background-color: #e74c3c;
+          }
+          td.greyed-out {
+            background-color: $dark-divider-colour;
+          }
+          td.white-background {
+            background-color: white;
+          }
+          td {
+            height: 20px;
+            border-right:  1px solid $light-grey;
+            .time {
+              padding-top: 20px;
+              position: absolute;
+            }
+          }
+        }
+        tr:nth-child(4n+4){
+          td{
+            border-bottom: 1px solid $light-grey;
+          }
+          .no-borders{
+            border-bottom: none;
+          }
+
+        }
+      }
+    }
+  }
+
+}

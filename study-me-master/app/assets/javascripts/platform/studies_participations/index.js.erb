@@ -1,0 +1,58 @@
+function showRating(star) {
+  // Show the star being hovered over and the ones preceeding it as active
+  var rating;
+
+  rating = $(star).attr("id").split("-")[1]
+
+  for (var i = 1; i <= 5; i++) {
+    if (i <= rating) {
+      $(star).parent().find("#rating-" + String(i)).attr("src", "<%= asset_path('study-stars-active.svg') %>");
+    } else {
+      $(star).parent().find("#rating-" + String(i)).attr("src", "<%= asset_path('study-stars.svg') %>");
+    }
+  }
+}
+
+$(function() {
+  $(".rating.clickable").bind("mouseover", function() {
+    if ($(this).hasClass("clickable")) {
+      showRating(this);
+    }
+  });
+
+  $(".rating-cell.ready").mouseout(function() {
+    // Reset the stars to be empty when the mouse leaves the table cell
+    $(this).children(".rating.clickable").attr("src", "<%= asset_path('study-stars.svg') %>");
+  });
+
+  $(".rating.clickable").click(function() {
+    // Set the rating in the hidden_field within the rating form, and then
+    // submit it
+    var rating, form;
+
+
+    rating = $(this).attr("id").split("-")[1];
+    form = $(this).siblings("#new_rating")
+
+    form.find("#rating_rating").val(rating);
+    form.submit();
+
+    $(this).parent().children(".rating.clickable").removeClass("clickable");
+    rating = form.find("#rating_rating").val();
+
+    for (var i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        $(this).parent().find("#rating-" + String(i)).attr("src", "<%= asset_path('study-stars-active.svg') %>");
+      } else {
+        $(this).parent().find("#rating-" + String(i)).attr("src", "<%= asset_path('study-stars.svg') %>");
+      }
+    }
+
+    $(this).parent().removeClass("ready");
+    $(this).parent().addClass("done");
+  });
+
+  $("#new_rating").on("ajax:success", function(response) {
+    console.log(response);
+  });
+});

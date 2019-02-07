@@ -1,0 +1,38 @@
+<div class="profile-image-container">
+  <%= image_tag 'seal-photo.png', class: 'profile-image' %>
+  <div class="twelve columns">
+    <h1 class="profile-title">Profile</h1>
+  </div>
+  <% if current_user.is_a?(Researcher) %>
+    <div class="four columns center">
+      <h6>Name</h6>
+      <p><%= current_user.name %></p>
+    </div>
+    <div class="four columns center">
+      <h6>University</h6>
+      <p><%= current_user.university.name %></p>
+    </div>
+    <div class="four columns center">
+      <h6>User Type</h6>
+      <p><%= current_user.type %></p>
+    </div>
+  <% else %>
+    <div class="six colums center">
+      <h6>Name</h6>
+      <p><%= current_user.name %></p>
+    </div>
+    <div class="six columns center">
+      <h6>User Type</h6>
+      <p><%= current_user.type %></p>
+    </div>
+  <% end %>
+
+  <div class="twelve columns center">
+    <h6>Your rating</h6>
+    <div class="profile-stars">
+      <% (1..5).each do |i| %>
+        <%= image_tag "study-stars#{'-active' if i <= current_user.rating}.svg"%>
+      <% end %>
+    </div>
+  </div>
+</div>

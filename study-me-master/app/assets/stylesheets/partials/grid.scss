@@ -1,0 +1,140 @@
+// TKD Grid V1.0.0
+// Copyright 2016, Barnaby Taylor and Archie Kennedy-Dyson
+// Based on the Skeleton grid by Dave Gamache
+// http://getskeleton.com/
+// Used under the MIT license
+// http://www.opensource.org/licenses/mit-license.php
+// 16/12/2016
+
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.column,
+.columns {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+}
+
+.row {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 400px) {
+  .container {
+    width: 85%;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .container {
+    width: 80%;
+  }
+
+  // Columns
+  .one.column,
+  .one.columns {
+    width: calc(100% / 12);
+  }
+  
+  .two.columns              { width: calc(100% / 6) }
+  .three.columns            { width: 25% }
+  .four.columns             { width: calc(100% / 3) }
+  .five.columns             { width: calc((100% / 12) * 5) }
+  .six.columns              { width: 50% }
+  .seven.columns            { width: calc((100% / 12) * 7) }
+  .eight.columns            { width: calc((100% / 3) * 2) }
+  .nine.columns             { width: 75% }
+  .ten.columns              { width: calc((100% / 12) * 10) }
+  .eleven.columns           { width: calc((100% / 12) * 11) }
+  .twelve.columns           { width: 100% }
+
+// Offsets
+  .offset-by-one.column,
+  .offset-by-one.columns    { margin-left: calc(100% / 12) }
+  .offset-by-two.columns    { margin-left: calc(100% / 6) }
+  .offset-by-three.columns  { margin-left: 25% }
+  .offset-by-four.columns   { margin-left: calc(100% / 3) }
+  .offset-by-five.columns   { margin-left: calc((100% / 12) * 5) }
+  .offset-by-six.columns    { margin-left: 50% }
+  .offset-by-seven.columns  { margin-left: calc((100% / 12) * 7) }
+  .offset-by-eight.columns  { margin-left: calc((100% / 3) * 2) }
+  .offset-by-nine.columns   { margin-left: 75% }
+  .offset-by-ten.columns    { margin-left: calc((100% / 12) * 10) }
+  .offset-by-eleven.columns { margin-left: calc((100% / 12) * 11) }
+}
+
+// .container {
+//   width: 100%;
+//   max-width: 960px;
+//   min-width: 660px;
+//   margin: 0 auto;
+//   overflow: hidden;
+// }
+//
+// .row {
+//   width: 100%;
+// }
+//
+// .columns {
+//   float: left;
+//   text-align: center;
+//   box-sizing: border-box;
+// }
+//
+// .one.columns {
+//   width: calc(100% / 12);
+//   min-width: 55px;
+// }
+//
+// .three.columns {
+//   width: 25%;
+//   min-width: 105px;
+// }
+//
+// .four.columns {
+//   width: calc(100% / 3);
+//   min-width: 220px;
+// }
+//
+// .five.columns {
+//   width: calc(100% * (5 / 12));
+//   min-width: 275px;
+// }
+//
+// .six.columns {
+//   width: 50%;
+//   min-width: 330px;
+// }
+//
+// .seven.columns {
+//   width: calc(100% * (7 / 12));
+//   min-width: 385px;
+// }
+//
+// .eight.columns {
+//   width: calc(200% / 3);
+//   min-width: 440px;
+// }
+//
+// .twelve.columns {
+//   width: 100%;
+//   min-width: 660px;
+// }
+//
+// .left.aligned.columns {
+//   text-align: left;
+// }
+//
+// @media screen and (max-width: 659px) {
+//   .columns {
+//     float: none;
+//     width: 100% !important;
+//   }
+// }

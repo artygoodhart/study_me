@@ -1,0 +1,16 @@
+<% content_for :heading do %>
+  Tags
+<% end %>
+
+<% if params[:tag] %>
+  <div class="row">
+    <%= link_to "&lt; Back to Tags".html_safe, studies_path(section: 'tags'), class: "next page twelve columns" %>
+  </div>
+  <% @studies.each do |study| %>
+    <%= render partial: "partials/study", locals: { study: study } %>
+  <% end %>
+<% else %>
+  <% Study.tags.each do |tag| %>
+    <%= render partial: "/studies/partials/category", locals: { tag: tag } %>
+  <% end %>
+<% end %>

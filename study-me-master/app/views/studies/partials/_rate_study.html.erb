@@ -1,0 +1,31 @@
+<%= form_for @new_rating do |f| %>
+<div class="twelve columns">
+  <h3>Please let us know how the researcher handled the study</h3>
+  <h5 class="small-input-titles">How would you rate the Study?</h5>
+    <%= f.hidden_field :rating, value: 0, id: 'rating' %>
+    <%= f.hidden_field :study_id, value: params[:id] %>
+    <%= f.hidden_field :user_being_rated_id, value: @study.researcher.id %>
+
+    <div class="stars">
+      <%= image_tag "study-stars-grey.svg" %>
+      <%= image_tag "study-stars-grey.svg" %>
+      <%= image_tag "study-stars-grey.svg" %>
+      <%= image_tag "study-stars-grey.svg" %>
+      <%= image_tag "study-stars-grey.svg" %>
+    </div>
+</div>
+<div class="twelve columns">
+  <div class="">
+    <%= label_tag :notify_published_study, class: "round checkbox" do %>
+      <%= check_box_tag :notify_published_study, true %>
+      <span>Would you like to be notified when this study is published?</span>
+    <% end %>
+  </div>
+</div>
+<div class="twelve columns">
+  <div class="center">
+    <%= f.submit class:"studies-button" %>
+  </div>
+</div>
+
+<% end %>

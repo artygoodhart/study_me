@@ -1,0 +1,62 @@
+<table class="table no-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Timeslot</th>
+      <th class="center-column">Rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @participations.sort_by { |participation| participation.timeslot.from }.each do |participation| %>
+      <tr>
+        <td><%= participation.participant.name %></td>
+        <td><%= participation.participant.email %></td>
+        <td><%= "#{human_datetime participation.timeslot.from} - #{human_datetime participation.timeslot.to}" %></td>
+        <% if rating = @study.ratings.find_by_user_being_rated_id(participation.participant.id) %>
+          <td class="center-column rating-cell done">
+            <% (1..5).each do |i| %>
+              <%= image_tag "study-stars#{'-active' if i <= rating.rating}.svg"%>
+            <% end %>
+          </td>
+        <% else %>
+          <% if DateTime.now >= participation.timeslot.to %>
+            <td class="center-column rating-cell ready">
+              <% (1..5).each do |i| %>
+                <%= image_tag "study-stars#{'-active' if i <= Rating.default_rating}.svg", class: "rating clickable", id: "rating-#{i}" %>
+              <% end %>
+
+              <%= form_for @new_rating, remote: true do |f| %>
+                <%= f.hidden_field :user_being_rated_id, value: participation.participant.id %>
+                <%= f.hidden_field :study_id, value: @study.id %>
+                <%= f.hidden_field :rating, value: Rating.default_rating %>
+              <% end %>
+            </td>
+          <% else %>
+            <td class="center-column rating-cell waiting">
+              <% (1..5).each do |i| %>
+                <%= image_tag "study-stars.svg"%>
+              <% end %>
+            </td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table no-hover">
+  <thead>
+    <tr>
+      <th colspan="3">Key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="three-equal-cols">
+      <td class="rating-cell ready">Please rate this participant</td>
+      <td class="rating-cell waiting">Please wait until after this participant's timeslot to rate them</td>
+      <td class="rating-cell done">This participant has already been rated - thank you!</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,4 @@
+<%= form_for :filterrific, url: search_studies_path, method: :post, html: { class: "studies-search-form-page" }, remote: true do |f| %>
+  <%= f.text_field :search_query, class: 'filterrific-periodically-observed', placeholder: 'Search for a Study', id: "filterrific_search_query_page" %>
+<% end %>
+<div id="filterrific-studies-results-page" class="search-results-for-page"></div>

@@ -1,0 +1,36 @@
+<table class="universities table stats timeslots-table">
+  <thead>
+    <tr>
+      <th class="center-column">To</th>
+      <th class="center-column">From</th>
+      <th class="center-column">Filled</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timeslots_view.each do |timeslot| %>
+      <tr class="">
+        <td class="center-column">
+          <%= human_datetime timeslot.from %>
+        </td>
+        <td class="center-column">
+          <%= human_datetime timeslot.to %>
+        </td>
+        <td class="center-column">
+          <% if !(@study.participations.where(timeslot_id: timeslot.id).count == 0) %>
+            Filled
+          <% else %>
+            Open
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="6"><%= page_entries_info @timeslots_view %></td>
+      <td colspan="2"><%= will_paginate @timeslots_view %></td>
+    </tr>
+  </tfoot>
+</table>

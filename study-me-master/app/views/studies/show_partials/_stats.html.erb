@@ -1,0 +1,185 @@
+<% if @study.paid %>
+<div class="stats-page">
+  <div class="stats-banner">
+    <h1>Statistics</h1>
+  </div>
+
+  <% if @study.participants.any? %>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="graph-banner orange">
+          Choose your participants
+        </div>
+        <div class="graph-wrapper table-of-participants">
+          <%= render 'studies/partials/table_of_participants' %>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="twleve columns">
+        <div class="graph-banner mint-green">
+          Timeslots
+        </div>
+        <div class="graph-wrapper table_of_participants">
+          <%#= render 'studies/partials/table_of_timeslots' %>
+        </div>
+      </div>
+    </div> -->
+    <% if !(@study.accepted_participants.count == 0) %>
+      <div class="row">
+        <div id="gender-split" class="four columns">
+          <div class="graph-banner dark-navey">
+            Gender Split
+          </div>
+          <div class="graph-wrapper">
+            <canvas id="doughnut_chart_gender"></canvas>
+            <div class="graph-info">
+              <div class="inline no-margin gender-box">
+                <h2 id = "female_perc"></h2>
+                <p>Female</p>
+              </div>
+              <div class="inline no-margin gender-box">
+                <h2 id="male_perc"></h2>
+                <p>Male</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="line-graph" class="eight columns">
+          <div class="line-chart-wrapper">
+            <canvas id="line_chart" width="100%" height="40%"></canvas>
+          </div>
+        </div>
+        <div id="particpants-total" class="four columns">
+          <div class="graph-banner dark-navey">
+            Participants
+          </div>
+          <div class="data-wrapper">
+            <div id="add-non-user">
+              <h2 class="no-margin"><%= "#{@study.participations.where(accepted: true).count} <span>(Study Me)</span>".html_safe%></h2>
+              <p class="no-margin">+</p>
+              <h2 class="no-margin"><%= "#{@study.non_user_participants.count} (Other)"  %></h2>
+            </div>
+            <button id="add-non-user-button" type="button" name="button">Add non study me participants</button>
+          </div>
+        </div>
+
+        <div id="mean-age" class="four columns">
+          <div class="graph-banner mint-green">
+            Mean Age
+          </div>
+          <div id="mean-age-number"class="data-wrapper">
+            <h2 class="no-margin">  <%= @study.mean_age %> </h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="amount-participated" class="eight columns">
+          <div class="graph-banner light-blue">
+            Study cost
+          </div>
+          <div class="stats-data-container">
+            <div class="full-width">
+              <h2><%= @study.participations.where(accepted: true).count %></h2>
+              <p>Study Me Participants</p>
+            </div>
+            <div class="full-width">
+              <h2><%= humanized_money_with_symbol @study.reward_per_participant %></h2>
+              <p>Per Participant</p>
+            </div>
+            <hr />
+            <div class="full-width">
+              <h2><%= humanized_money_with_symbol(@study.reward_per_participant * @study.participations.where(accepted: true).count) %></h2>
+              <p>Total Cost</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="age-range" class="four columns">
+          <div class="graph-banner orange">
+            Age Range
+          </div>
+          <div class="graph-wrapper">
+            <canvas id="doughnut_chart_age"></canvas>
+            <div class="age-range">
+              <h2 class="no-margin">
+                <%= "#{@study.lowest_age} - #{@study.highest_age}" %> </h2>
+                <p>Age Range</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="twelve columns">
+          <div class="graph-banner light-blue">
+            Upload a PDF or website
+          </div>
+          <div class="pdf-upload">
+            <% if @study.pdf_attachment? %>
+            <%= link_to "Study has a pdf uploaded. Click to view", @study.pdf_attachment.url, target: '_blank', class: "pdf-submit" %>
+            <% end %>
+
+            <% if @study.study_web_link && @study.study_web_link != '' %>
+            <%= link_to "A web link has been added. Click to view", @study.study_web_link, target: '_blank', class: "pdf-submit" %>
+            <% end %>
+
+            <% if !@study.pdf_attachment? && @study.study_web_link.nil? %>
+            <%= form_for @study do |f| %>
+            <% if flash[:error] %>
+            <%= format_error flash[:error] %>
+            <% end %>
+            <div class="photo-upload">
+              <span id="pdf-upload-text">Drag a pdf onto this box...</span>
+              <%= f.file_field :pdf_attachment %>
+            </div>
+
+            <p>or</p>
+
+            <%= f.label :study_web_link %>
+            <%= f.text_field :study_web_link %>
+            <%= f.submit "Save", class: "pdf-submit" %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="graph-banner light-blue">
+          No participants yet
+        </div>
+        <div class="data-wrapper no-participants-yet">
+          <h2 class="no-margin">Your stats &amp; analytics will appear once participants have completed your study.</h2>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= render partial: 'studies/partials/non_user_participants_modal' %>
+
+<% else %>
+  <% if flash[:error] %>
+    <div class="flash error"><%= flash[:error] %></div>
+  <% end %>
+
+  <%= form_tag study_payments_path(@study.id) do %>
+    <span>Before any participants can join your study, you will need to pay using secure payment provide Stripe:</span>
+    <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-amount="<%= @study.total_amount_pennies %>"
+    data-key="<%= ENV["stripe_test_key"] %>"
+    data-name="Study Me"
+    data-description="Widget"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true"
+    data-currency="gbp">
+    </script>
+  <% end %>
+<% end %>

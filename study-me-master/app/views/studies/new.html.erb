@@ -1,0 +1,150 @@
+
+<div class="study-title-banner">
+</div>
+
+<div class="studies-container">
+  <%= form_for @new_study do |f| %>
+
+    <div class="twelve columns form-item center">
+      <h2>Study Information</h2>
+    </div>
+
+    <% if @new_study.errors.any? %>
+    <div class="twleve columns study-errors form-item">
+      <% @new_study.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+    <% end %>
+
+    <div class="twelve columns form-item">
+      <%= f.label :title, "Study Title", class:"input-titles " %>
+      <%= f.text_field :title, required: true, class:"input-style title-input" %>
+    </div>
+
+    <div class="twelve columns form-item">
+      <%= f.label :background_photo, "Upload a relevant image", class:"input-titles" %>
+      <div class="photo-upload">
+        <span id="photo-upload-text">Drag a photo onto this box...</span>
+        <%= f.file_field :background_photo, required: true %>
+      </div>
+      <hr>
+    </div>
+
+    <div class="twelve columns form-item">
+      <%= f.label :aim, "Aim", class:"input-titles" %>
+      <%= f.text_area :aim, class:"input-style aim-input" %>
+    </div>
+
+    <div class="twelve columns form-item">
+      <%= f.label :type_of_study, "Type of study", class: "input-titles" %>
+      <div class="center">
+        <div class="physical-button-pos">
+          <%= f.label :location_physical, class: " round checkbox inline" do %>
+          <%= f.radio_button :location, "Physical", required: true %>
+          <span>Physical </span>
+          <% end %>
+        </div>
+        <div class="virtual-button-pos">
+          <%= f.label :location_virtual, class: " round checkbox inline" do %>
+          <%= f.radio_button :location, "Virtual", required: true %>
+          <span>Virtual </span>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+    <div class="twelve columns form-item">
+      <%= f.label :reward_per_participant, "How much should participants receive for their time (GBP)?", class: "input-titles" %>
+      <%= f.label :reward_per_participant, "Our 15% fee is added on top of this so please take 15% off what you have budgeted", class: "small-input-titles" %>
+      <%= f.number_field :reward_per_participant, class: "input-style m-auto" %>
+    </div>
+
+    <div class="twelve columns form-item">
+      <%= f.label :duration, "How long will each participant spend completing the study? Give a rough estimate in minutes", class:"input-titles" %>
+      <%= f.number_field :duration, class:"input-style m-auto" %>
+    </div>
+
+    <div class="twelve columns form-item">
+      <%= f.label :number_of_participants, "How many participants would you like for your study?", class:"input-titles" %>
+      <%= f.number_field :number_of_participants, class:"input-style m-auto" %>
+    </div>
+
+    <div class="tags twelve columns form-item">
+      <%= f.label :title, "Tags", class:"input-titles" %>
+      <%= f.label :tags, "Select any suitable tags to help participants find your study", class:"small-input-titles" %>
+
+      <br />
+      <br />
+
+      <% Study.tags.each_slice(3) do |slice| %>
+        <% slice.each do |tag| %>
+          <div class="tag-form-item four columns">
+            <%= f.label "tags_#{tag}", class: "round checkbox inline" do %>
+              <%= f.check_box :tags, { multiple: true, checked: false }, tag, nil %>
+              <span><%= tag %></span>
+            <% end %>
+          </div>
+
+        <% end %>
+      <% end %>
+    </div>
+
+    <label class="input-titles form-item">Eligibility requirements</label>
+
+    <div class="twleve columns form-item">
+      <%= f.label :min_age, "Minimum age" %><br />
+      <%= f.number_field :min_age, value: 18, class: "input-style m-auto" %>
+    </div>
+
+    <div class="twleve columns form-item">
+      <%= f.label :max_age, "Maximum age" %><br />
+      <%= f.number_field :max_age, value: 60, class: "input-style m-auto" %>
+    </div>
+
+    <div class="twleve columns form-item">
+      <%= f.label :gender %><br />
+      <div class="center">
+        <%= f.label :gender_male, class: "round checkbox inline" do %>
+          <%= f.check_box :gender, { multiple: true, checked: true }, "male", nil %>
+          <span>Male</span>
+        <% end %>
+
+        <%= f.label :gender_female, class: "round checkbox inline" do %>
+          <%= f.check_box :gender, { multiple: true, checked: true }, "female", nil %>
+          <span>Female</span>
+        <% end %>
+      </div>
+    </div>
+
+    <div id='TextBoxesGroup' class='requirements-container'>
+      <%= f.label :requirements_studies, "Add some yes/no requirements", class:"input-titles form-item" %>
+      <%= f.fields_for :requirements_studies do |ff| %>
+        <div id="TextBoxDiv1" class="twelve columns form-item">
+          <div class="req-input">
+            <input class="requirements title-input input-style form" type="text" name="study[requirements_studies][requirement][text]" id="textbox" value="" />
+          </div>
+          <div class="yes-no">
+            <div class="check-box">
+                <label for="study[requirements_studies][requirement][checked]" class="round checkbox inline">
+                <input type="radio" name="study[requirements_studies][requirement][checked]" value="true" checked="checked" />
+                  <span>Yes</span>
+                </label>
+            </div>
+            <div class="check-box">
+              <label for="study[requirements_studies][requirement][checked]" class="round checkbox inline">
+                <input type="radio" name="study[requirements_studies][requirement][checked]" value="false" />
+                <span>No</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="center">
+      <%= f.submit class:"studies-button" %>
+    </div>
+  <% end %>
+</div>

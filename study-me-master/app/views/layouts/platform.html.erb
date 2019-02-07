@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StudyMe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "platform/#{params[:controller]}/#{params[:action]}" %>
+  <%= stylesheet_link_tag    "platform/#{params[:controller]}/#{params[:action]}", media: 'all' %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+</head>
+<body>
+
+<!-- <div id="persistent_error" class="flash error"><%= image_tag asset_path("icons/close.png"), id: "close_flash" %></div> -->
+
+<%= render "partials/backend_template" %>
+
+<div class="content-container">
+  <% if flash[:error] %>
+    <div class="flash error"><%= flash[:error].capitalize %><%= image_tag asset_path("icons/close.png"), id: "close_flash" %></div>
+  <% end %>
+  <% if flash[:success] %>
+    <div class="flash success"><%= flash[:success] %><%= image_tag asset_path("icons/close.png"), id: "close_flash" %></div>
+  <% end %>
+  <%= yield %>
+</div>
+
+</body>
+</html>

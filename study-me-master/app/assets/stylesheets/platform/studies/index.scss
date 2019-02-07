@@ -1,0 +1,176 @@
+@import 'variables';
+@import 'mixins';
+@import 'platform/individual_study';
+@import 'platform/platform_sub_menu';
+
+// Index
+.studies-title {
+  text-transform: none;
+  text-align: center;
+  font-weight: 300;
+  padding: 25px;
+  min-width: 322px;
+}
+
+.studies-menu-bar {
+  height: 60px;
+  a {
+    line-height: 60px;
+  }
+}
+
+.tag {
+  font-size: 30px;
+  font-weight: 300;
+  color: white;
+  text-align: center;
+  line-height: calc((100vh - 210px) / 3);
+  text-decoration: none;
+
+  &.art {
+    background: linear-gradient(
+    rgba(60,181,196, 0.6),
+    rgba(60,181,196, 0.6)
+    ),
+    asset-url('art-tag-image.png');
+    background-size: cover;
+  }
+
+  &.biology {
+    background: linear-gradient(
+    rgba(142, 68, 173,0.6),
+    rgba(142, 68, 173,0.6)
+    ),
+    asset-url('biology-photo.png');
+    background-size: cover;
+  }
+
+  &.business {
+    background: linear-gradient(
+    rgba(96,125,139, 0.6),
+    rgba(96,125,139, 0.6)
+    ),
+    asset-url('business-tag-image.png');
+    background-size: cover;
+  }
+
+  &.computers {
+    background: linear-gradient(
+    rgba(229,184,91, 0.6),
+    rgba(229,184,91, 0.6)
+    ),
+    asset-url('computers-tag-image.png');
+    background-size: cover;
+  }
+
+  &.environment {
+    background: linear-gradient(
+    rgba(84,125,68, 0.6),
+    rgba(84,125,68, 0.6)
+    ),
+    asset-url('environment-tag-image.png');
+    background-size: cover;
+  }
+
+  &.law {
+    background: linear-gradient(
+    rgba(164,150,189, 0.6),
+    rgba(164,150,189, 0.6)
+    ),
+    asset-url('law-tag-image.png');
+    background-size: cover;
+  }
+
+  &.physics {
+    background: linear-gradient(
+    rgba(41,128,185, 0.6),
+    rgba(41,128,185, 0.6)
+    ),
+    asset-url('space-background.png');
+    background-size: cover;
+  }
+
+  &.pyschology {
+    background: linear-gradient(
+    rgba(255,148,114, 0.6),
+    rgba(255,148,114, 0.6)
+    ),
+    asset-url('pyschology-tag-image.png');
+    background-size: cover;
+  }
+
+  &.technology {
+    background: linear-gradient(
+    rgba(21,143,119, 0.6),
+    rgba(21,143,119, 0.6)
+    ),
+    asset-url('technology-tag-image.png');
+    background-size: cover;
+  }
+}
+
+.previous.page {
+  background-color: $light-filter;
+  color: black;
+}
+
+.next.page {
+  background-color: $dark-filter;
+  color: white;
+}
+
+.page {
+  border: 0;
+  color: white;
+  display: block;
+  font-size: 25px;
+  font-weight: 300;
+  height: 110px;
+  line-height: 110px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: background-color 1000ms;
+  -ms-transition: background-color 1000ms;
+  transition: background-color 1000ms;
+
+  &:hover {
+    background-color: $mint-green;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@media only screen
+and (min-width: 320px)
+and (max-width: 815px) {
+
+  .studies-title {
+    display: none;
+  }
+
+  .dividing-line {
+    display: none;
+  }
+
+  .rotate {
+    transform: rotate(90deg);
+    /*Firefox*/
+    -moz-transform: rotate(90deg);
+    /*Microsoft Internet Explorer*/
+    -ms-transform: rotate(90deg);
+    /*Chrome, Safari*/
+    -webkit-transform: rotate(90deg);
+  }
+
+  .studies-menu-bar {
+    height: 0;
+  }
+
+  .on-hover-class {
+    .mobile-full-width {
+      width: 100%;
+    }
+  }
+}

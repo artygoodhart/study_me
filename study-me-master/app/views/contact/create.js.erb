@@ -1,0 +1,8 @@
+$(".error.field").slideUp("slow", function() {
+  <% if @error %>
+    $(".error.field").slideDown("slow");
+  <% else %>
+    $("form .collapse").slideUp("slow");
+    $(".expand.field").slideDown("slow");
+  <% end %>
+});

@@ -1,0 +1,59 @@
+// Text colour
+$dark-text: rgba(0, 0, 0, .87);
+$dark-secondary-text: rgba(0, 0, 0, .54);
+$dark-hint-text: rgba(0, 0, 0, .38);
+$dark-divider-colour: rgba(0, 0, 0, .12);
+
+// Colour scheme
+$yellow: #f9ae00;
+$yellow-light: rgba(249, 174, 0, .05);
+$yellow-medium: rgba(249, 174, 0, .1);
+$translucent-yellow: rgba(249, 174, 0, .9);
+$light-yellow: rgba(249, 174, 0, .75);
+$light-filter: rgba(255, 255, 255, .83);
+$lighter-filter: rgba(255, 255, 255, .60);
+$lightest-filter: rgba(255, 255, 255, .40);
+$dark-filter: rgba(74, 74, 74, .76);
+$dark-grey: #4a4a4a;
+$grey: #979797;
+$light-grey: #e9e8e8;
+$mint-green: #1bc7a5;
+$mint-green-light: rgba(27, 199, 165, .05);
+$mint-green-medium: rgba(27, 199, 165, .1);
+$mint-green-search-light: rgba(27, 199, 165, .5);
+$mint-green-search-dark: rgba(27, 199, 165, .7);
+$dark-green: #16a085;
+$dark-green-translucent: rgba(22, 160, 133, .8);
+$orange: #e67e22;
+$dark-blue: #2c3e50;
+$dark-navey: #2b323c;
+$light-blue: #2483c2;
+$pale-blue: #4ba8d1;
+$very-light-blue: #e5f1f7;
+$red: #e2584a;
+$grey-font: #4a4a4a;
+$white: #fff;
+$button-blue: #2785c2;
+
+// 3rd Party Colours
+
+$facebook-blue: #334f8d;
+$twitter-blue: #58aceb;
+
+// University-specific colours
+$lancaster-red: #ac121a;
+$durham-purple: rgba(89, 44, 90, .76);
+$leeds-beckett-purple: rgba(77, 45, 124, .76);
+$bristol-red: rgba(167, 26, 41, .76);
+$nottingham-blue: #002d5b;
+$white: #fff;
+
+// Height for components
+$height-of-menubar: 90px;
+$height-of-studies-banner: 150px;
+$height-of-studies-banner-mobile: 220px;
+$height-of-feature: 220px;
+$height-of-stats-banner: 120px;
+$height-long-stats: 580px;
+$height-short-stats: 285px;
+$height-of-graph-banner: 50px;

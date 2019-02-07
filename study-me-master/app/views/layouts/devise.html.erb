@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StudyMe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    'devise', media: 'all' %>
+  <%= stylesheet_link_tag    params[:controller], media: 'all' %>
+  <%= javascript_include_tag 'devise' %>
+  <%= javascript_include_tag 'validation' %>
+  <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+</head>
+<body>
+  <% if flash[:error] %>
+    <div class="flash error"><%= flash[:error].capitalize %><%= image_tag asset_path("icons/close.png"), id: "close_flash" %></div>
+  <% elsif flash[:success] %>
+    <div class="flash success"><%= flash[:success] %><%= image_tag asset_path("icons/close.png"), id: "close_flash" %></div>
+  <% end %>
+
+  <%= devise_error_messages! %>
+
+  <%= yield %>
+
+</body>
+</html>

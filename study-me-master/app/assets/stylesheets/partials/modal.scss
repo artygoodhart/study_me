@@ -1,0 +1,164 @@
+.modal-dialog {
+  display: none;
+	position: fixed;
+  color: white;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.6);
+	z-index: 99999;
+  overflow-x: scroll;
+
+
+
+  //Fade in
+
+	// opacity:0;
+	// -webkit-transition: opacity 400ms ease-in;
+	// -moz-transition: opacity 400ms ease-in;
+	// transition: opacity 400ms ease-in;
+	// pointer-events: none;
+
+
+  .close-modal {
+    float: right;
+    padding: 30px;
+    width: 40px;
+    height: 40px;
+    z-index: 100000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+  h2 {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .modal-btn {
+    border-color: $mint-green;
+    width: 100px;
+    color: white;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  .modal-btn.active {
+    background-color: $mint-green;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .modal-content {
+  	width: 50%;
+  	position: relative;
+  	margin: 10% auto;
+  	padding: 5px 20px 13px 20px;
+  	border-radius: 10px;
+  	background: $yellow;
+    box-shadow: 2px 2px 4px #4f4f4f, -2px 2px 4px #4f4f4f;
+  }
+  .modal-text {
+    margin: 40px 0;
+  }
+
+  .input-field-titles {
+    text-align: left;
+    font-weight: 300;
+    font-size: 12px;
+  }
+  .row {
+
+    input[type="text"],
+    input[type="date"]{
+    width: 100%;
+    margin-bottom: 26px;
+    margin-top: 10px;
+    padding: 7px 0 7px 20px;
+    font-weight: 300!important;
+    border: none;
+    background-color: $lightest-filter;
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-size: 1em;
+    font-weight: 100;
+
+
+    &:focus {
+      outline: none;
+      margin-bottom: 26px;
+      }
+    }
+
+
+    ::-webkit-input-placeholder { color: white; }
+  }
+
+  .non-user-button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: $mint-green;
+    border-color: $mint-green;
+
+  }
+
+  h2 {
+    font-weight: 300;
+    text-align: center;
+  }
+
+	form {
+		padding: 0 30px;
+	}
+
+	.columns .inline.round.checkbox {
+		float: none;
+	}
+
+  .modal-buttons {
+    text-align: center;
+    input[type='submit'] {
+      width: 162px;
+    }
+  }
+
+  .timeslot {
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .form-timeslot-button-submit {
+    display: inline-block;
+    form {
+      padding: 0;
+      width: 162px;
+    }
+  }
+}
+
+
+
+@media only screen
+and (min-width: 320px)
+and (max-width: 815px) {
+  .modal-dialog {
+    .modal-content {
+      border-radius: 0;
+      width: 90%;
+    }
+    .modal-btn {
+      display: block;
+      margin: auto;
+      margin-top: 10px;
+    }
+    .modal-text {
+      padding: 0 20px;
+    }
+  }
+
+}

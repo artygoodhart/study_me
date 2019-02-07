@@ -1,0 +1,15 @@
+<% if flash[:error] %>
+  var error = "<%= flash[:error].html_safe %>";
+
+  $(".flash.error").prepend(error);
+
+  $(".flash.error").slideDown('slow', 'swing', function() {});
+
+  $("#close_flash").on("click", function() {
+    console.log("click");
+    $(this).parent().slideUp('slow', 'swing', function() {});
+  });
+  console.log(error);
+<% else %>
+  console.log("success");
+<% end %>

@@ -1,0 +1,50 @@
+<div class="modal-dialog">
+	<div class="modal-content">
+    <%= image_tag 'icons/modal-close.png', id: 'close-modal-button', class: 'close-modal' %>
+		<h2>Add a Participant Recruited from Outside Study Me</h2>
+    <div class="modal-text">
+      <%= form_for @new_non_user_participant, url: study_non_user_participants_path(@study), html: { class: "modal-form" }, remote: true do |f| %>
+        <div id="gender-in-modal" class="row ">
+          <div class="four columns center">
+            <%= f.label :gender_male, class: "inline round checkbox" do %>
+              <%= f.radio_button :gender, "Male" %>
+              <span>Male</span>
+            <% end %>
+          </div>
+          <div class="four columns center">
+            <%= f.label :gender_female, class: "inline round checkbox" do %>
+              <%= f.radio_button :gender, "Female" %>
+              <span>Female</span>
+            <% end %>
+          </div>
+          <div class="four columns center">
+            <%= f.label :gender_other, class: "inline round checkbox" do %>
+              <%= f.radio_button :gender, "Other" %>
+              <span>Other</span>
+            <% end %>
+          </div>
+        </div>
+
+        <div id="dob-in-modal" class="row">
+          <%= f.label :date_of_birth, "Date of birth", class:"input-field-titles" %>
+          <%= f.date_field :date_of_birth, class: " ip-field-style" %>
+        </div>
+
+        <div id="mor-in-modal" class="row">
+          <%= f.label :recruitment_date, "Method of Recruitment", class:"input-field-titles" %>
+          <%= f.text_field :recruitment_method, autofocus: true, placeholder: "Method of Recruitment" %>
+        </div>
+
+        <div id="rd-in-modal" class="row">
+          <%= f.label :recruitment_date, "Recruitment date", class:"input-field-titles" %>
+          <%= f.date_field :recruitment_date, class: " ip-field-style" %>
+
+        </div>
+
+        <div class="row">
+          <%= f.submit "Submit", id: "Modal-Submit", class: "button non-user-button" %>
+        </div>
+      <% end %>
+    </div>
+	</div>
+</div>

@@ -1,0 +1,141 @@
+@import 'variables';
+
+.profile-title {
+  text-align: center;
+  margin: 0;
+  padding: 25px;
+  font-weight: 300;
+  text-transform: none;
+}
+
+.profile-image-container {
+  width: 100%;
+  min-height: 210px;
+  overflow: hidden;
+  background-color: $lighter-filter;
+  position: relative;
+
+  h6 {
+    color: $dark-grey;
+    margin-bottom: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .profile-image {
+    position: absolute;
+    top: 30%;
+    z-index: -10;
+    transform: translateY(-30%);
+    width: 100%;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+  }
+
+  .profile-stars {
+    height: 20px;
+    padding: 5px 0 15px;
+
+    img {
+      display: inline-block;
+    }
+  }
+}
+
+
+.profile-menu-bar {
+  height: 91px;
+}
+
+.profile-sub-menu-bar {
+  padding: 16px;
+  a {
+    line-height: 28px;
+    font-size: 20px;
+  }
+
+  br {
+    line-height: 0;
+  }
+}
+
+.create-new-study {
+  width: 100%;
+  height: 80px;
+  text-align: center;
+
+  a {
+    background-color: $mint-green;
+    // width: 100%;
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 80px;
+    -webkit-transition: background-color 500ms, color 500ms;
+    -ms-transition: background-color 500ms, color 500ms;
+    transition: background-color 500ms, color 500ms;
+
+    &:hover {
+      background-color: $mint-green-search-dark;
+      color: $dark-grey;
+    }
+  }
+}
+
+.no-studies-welcome-message {
+  text-align: center;
+  padding: 80px;
+}
+
+
+@media only screen
+and (min-width: 320px)
+and (max-width: 815px) {
+  .studies-menu-bar {
+    display: block;
+    height: 91px;
+
+    a {
+      font-size: 20px;
+      line-height: 28px;
+
+      br {
+        line-height: 0;
+      }
+    }
+  }
+
+  .profile-image-container {
+    margin-top: 120px;
+    padding: 20px 0px;
+
+    img {
+      height: 100%;
+      width: auto;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .mobile-margin-top {
+    margin-top: 120px;
+  }
+
+  #mobile-dropdown {
+    position: relative;
+  }
+  .display-none-on-mobile {
+    display: none;
+  }
+}
+
+@import 'platform/individual_study';
+@import 'platform/platform_sub_menu';

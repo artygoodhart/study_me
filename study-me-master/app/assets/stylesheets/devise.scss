@@ -1,0 +1,305 @@
+@import 'variables';
+
+.devise-container {
+  background-color: $yellow;
+  color: #fff;
+  width: 100%;
+
+  &.v-height {
+    height: 100%;
+  }
+}
+
+.button-div {
+  width: 49%;
+  display: inline-block;
+  text-align: center;
+}
+
+.centered.container {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-size: 5em;
+  text-align: center;
+  text-transform: none;
+}
+
+.password.icon {
+  height: 60px;
+  opacity: .5;
+  width: 60px;
+}
+
+.password.icon.hash {
+  width: 40px;
+  height: 40px;
+  opacity: 0.7;
+}
+
+.valid.password.icon {
+  opacity: 1;
+}
+
+// CONFIRMATION PAGES
+.welcome-container {
+  width: 480px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 100px 0 50px;
+
+  .columns {
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    margin-top: 0;
+    text-align: left;
+  }
+
+  h2 {
+    text-align: left;
+    font-weight: 100;
+  }
+
+  h3 {
+    text-align: left;
+    font-weight: lighter;
+  }
+
+  form.devise {
+    margin-left: 0;
+  }
+
+  p {
+    font-size: 1em;
+    font-weight: 200;
+
+    span {
+      font-weight: 300;
+    }
+  }
+
+  label {
+    display: block;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 200;
+    margin: 35px 0 16px;
+  }
+
+  input[type=password] {
+    margin-bottom: 15px !important;
+  }
+
+  .hint {
+    margin-bottom: 40px;
+    font-size: 0.7em;
+    font-weight: 200;
+    text-align: left;
+  }
+
+  .group {
+    margin-top: 60px;
+    margin-bottom: 70px;
+  }
+
+  input[type="submit"] {
+    margin-top: -30px;
+  }
+
+  .icon-group {
+    overflow: hidden;
+
+    .four.columns {
+      float: left;
+      width: calc(100% / 3) !important;
+      min-width: inherit;
+    }
+  }
+
+  .icon-placeholder {
+    width: 48px;
+    padding-left: 220px;
+  }
+
+  .email-padding {
+    padding-left: 50px;
+  }
+
+  .university-padding {
+    padding-left: 18px;
+  }
+
+  .thin-text {
+    font-weight: 100;
+  }
+
+  .normal-text {
+    font-weight: 300!important;
+  }
+
+  .thick-text {
+    font-weight: 400;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .password-field {
+    height: 35px;
+    font-size: 25px;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+  }
+
+  .password-field {
+    height: 35px;
+    font-size: 20px;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+  }
+
+
+
+  ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: white;
+  }
+
+  .text-field {
+    height: 35px;
+    font-size: 20px;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-radius: 0;
+  }
+
+  .no-margin-top {
+    margin-top: -40px !important;
+  }
+
+  @media screen and (max-width: 659px) {
+    .columns {
+      margin-bottom: 30px;
+    }
+
+    .columns,
+    h1,
+    h3,
+    input,
+    label,
+    p,
+    span {
+      text-align: center !important;
+    }
+
+    form.devise {
+      margin: 0 auto;
+    }
+
+    input[type="submit"] {
+      float: none;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .welcome-container,
+  .centered.container,
+  form.devise {
+    h2,
+    p,
+    input[type='email'],
+    input[type='text'],
+    label,
+    span,
+    .checkbox span,
+    .basic.button,
+    .hint,
+    select {
+      font-weight: 300;
+    }
+  }
+
+  form.devise .hint {
+    font-size: 1em;
+    text-align: center;
+  }
+}
+
+@media only screen
+and (min-width: 320px)
+and (max-width: 815px) {
+
+  .welcome-container {
+    width:100%;
+    .password-positioning {
+      margin-top: 0px;
+    }
+    h2 {
+      font-size: 25px;
+      padding-left: 40px;
+    }
+  }
+
+  .margin-top-mobile {
+    margin-top: 50px;
+  }
+
+  .row {
+    .columns.margin-bottom-mobile {
+      margin-bottom: 50px;
+    }
+  }
+
+  .group {
+  width: 80%;
+  margin: auto;
+  }
+
+  .columns.four {
+    margin-bottom: 0;
+  }
+
+
+  .inline.round.checkbox {
+    text-align: left!important;
+    margin-left: 70px;
+    margin-top: 20px;
+    input {
+      margin-right: 10px;
+    }
+  }
+  form.devise .round.checkbox input[type="radio"] {
+    height: 36px;
+    width: 36px;
+    border-radius: 18px;
+  }
+  .smaller-mobile-font {
+    font-size: 65px;
+    padding-top: 30px;
+  }
+
+  #error_explanation {
+    padding:30px;
+  }
+
+  .round.checkbox {
+    width: 80%;
+    margin: auto;
+  }
+
+
+}
+// Confirmation pages done.

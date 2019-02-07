@@ -1,0 +1,63 @@
+<% if @study.first_timeslot_complete %>
+<div class="rate-participants">
+  <%= link_to 'Rate Participants', study_participations_path(@study) %>
+</div>
+<% end %>
+<table id="choose-participations" class="universities table stats">
+  <thead>
+    <tr>
+      <th class="center-column">Name</th>
+      <th class="center-column">Timeslot</th>
+      <th class="center-column">Rating</th>
+      <th class="center-column">Created At</th>
+      <th class="center-column">Accept or Reject</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @participants_to_accept.each do |participation| %>
+      <tr>
+        <td><%= participation.participant.name %></td>
+        <td class="center-column">
+          <%  if participation.timeslot %>
+            <%= human_datetime participation.timeslot.from %> - <%= human_datetime participation.timeslot.to %>
+          <% elsif !participation.accepted %>
+            Timeslot removed due to rejection
+          <% else %>
+            No timeslot yet
+          <% end %>
+        </td>
+        <td class="center-column">
+          <%= participation.participant.show_rating %>
+        </td>
+        <td class="center-column"><%= human_datetime participation.created_at %></td>
+        <% if participation.accepted.nil? && participation.timeslot %>
+          <%= form_for participation, url: study_participation_path(@study, participation), method: :patch, html: { id: 'choose-participations'} do |f| %>
+            <td class="center-column">
+              <%= f.label 'accepted_true', 'Accept' %>
+              <%= f.radio_button :accepted, true %>
+              <%= f.label 'accepted_false', 'Reject' %>
+              <%= f.radio_button :accepted, false %>
+            </td>
+            <td class="center-column">
+              <%= f.submit 'Save' %>
+            </td>
+
+          <% end %>
+        <% else %>
+          <td class="center-column">
+            <%= participation.accepted.nil? ? 'Waiting for a timeslot' : participation.accepted ? 'Accepted' : 'Rejected'  %>
+          </td>
+          <td class="center-column"></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="6"><%= page_entries_info @participants_to_accept %></td>
+      <td colspan="2"><%= will_paginate @participants_to_accept %></td>
+    </tr>
+  </tfoot>
+</table>
